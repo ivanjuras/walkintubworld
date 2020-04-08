@@ -1060,15 +1060,15 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: url("/assets/media/background-mobile.png") top left no-repeat;
+  background: url("./assets/media/background-mobile.png") top left no-repeat;
   background-size: cover;
 }
 
 @media (min-width: 1300px) {
   .main-hero {
     height: 670px;
-    background: url("/assets/media/background-big.png") no-repeat, -webkit-gradient(linear, left bottom, left top, from(#2385a7));
-    background: url("/assets/media/background-big.png") no-repeat, linear-gradient(0deg, #2385a7);
+    background: url("./assets/media/background-big.png") no-repeat, -webkit-gradient(linear, left bottom, left top, from(#2385a7));
+    background: url("./assets/media/background-big.png") no-repeat, linear-gradient(0deg, #2385a7);
     background-position: -50px center;
     background-size: cover;
     padding: 3rem 0 7.5rem 0;
@@ -1155,7 +1155,7 @@ body {
 }
 
 .why-love__list-item:before {
-  content: url("/assets/media/checkmark.png");
+  content: url("./assets/media/checkmark.png");
   position: absolute;
   top: 50%;
   left: 0;
