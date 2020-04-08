@@ -7,14 +7,14 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: url("./assets/media/background-mobile.png") top left no-repeat;
+  background: url("./../assets/media/background-mobile.png") top left no-repeat;
   background-size: cover;
 }
 
 @media (min-width: 1300px) {
   .main-hero {
     height: 670px;
-    background: url("./assets/media/background-big.png") no-repeat,
+    background: url("./../assets/media/background-big.png") no-repeat,
       linear-gradient(0deg, #2385a7);
     background-position: -50px center;
     background-size: cover;
