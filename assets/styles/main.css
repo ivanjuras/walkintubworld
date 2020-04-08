@@ -1069,31 +1069,13 @@ body {
     height: 670px;
     background: url("../media/background-big.png") no-repeat, -webkit-gradient(linear, left bottom, left top, from(#2385a7));
     background: url("../media/background-big.png") no-repeat, linear-gradient(0deg, #2385a7);
-    background-position: -50px center;
+    background-position: 0 center;
     background-size: cover;
     padding: 3rem 0 7.5rem 0;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-  }
-}
-
-@media (min-width: 1400px) {
-  .main-hero {
-    background-position: -340px center;
-  }
-}
-
-@media (min-width: 1600px) {
-  .main-hero {
-    background-position: -240px center;
-  }
-}
-
-@media (min-width: 1800px) {
-  .main-hero {
-    background-position: 0 center;
   }
 }
 
@@ -1155,7 +1137,7 @@ body {
 }
 
 .why-love__list-item:before {
-  content: url("./../assets/media/checkmark.png");
+  content: url("./../media/checkmark.png");
   position: absolute;
   top: 50%;
   left: 0;

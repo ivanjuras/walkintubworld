@@ -16,27 +16,27 @@
     height: 670px;
     background: url("../media/background-big.png") no-repeat,
       linear-gradient(0deg, #2385a7);
-    background-position: -50px center;
+    background-position: 0 center;
     background-size: cover;
     padding: 3rem 0 7.5rem 0;
     flex-direction: row;
   }
 }
 
-@media (min-width: 1400px) {
-  .main-hero {
-    background-position: -340px center;
-  }
-}
+// @media (min-width: 1400px) {
+//   .main-hero {
+//     background-position: -340px center;
+//   }
+// }
 
-@media (min-width: 1600px) {
-  .main-hero {
-    background-position: -240px center;
-  }
-}
+// @media (min-width: 1600px) {
+//   .main-hero {
+//     background-position: -240px center;
+//   }
+// }
 
-@media (min-width: 1800px) {
-  .main-hero {
-    background-position: 0 center;
-  }
-}
+// @media (min-width: 1800px) {
+//   .main-hero {
+//     background-position: 0 center;
+//   }
+// }
