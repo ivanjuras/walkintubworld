@@ -112,6 +112,7 @@ body {
 
 @media (min-width: 1300px) {
   .main-headline {
+    margin-top: 5rem;
     text-shadow: none;
   }
 }
@@ -319,6 +320,12 @@ body {
   max-width: 52rem;
 }
 
+@media (min-width: 1300px) {
+  .cta-section {
+    width: 52rem;
+  }
+}
+
 /********** Badges **********/
 .badges {
   padding: 30px 20px;
@@ -510,7 +517,6 @@ body {
           align-items: center;
   position: relative;
   padding-bottom: 2rem;
-  height: 60vh;
 }
 
 .form__section {
@@ -524,13 +530,14 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 60vh;
+  min-height: 50vh;
+  height: 50vh;
 }
 
 @media (min-width: 1300px) {
   .form__section {
-    min-height: 219px;
-    height: 219px;
+    min-height: 40vh;
+    height: 40vh;
   }
 }
 
@@ -842,7 +849,9 @@ body {
 
 /********** Map Marker **********/
 .map-marker {
+  display: block;
   margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 /********** Reviews **********/
@@ -1060,7 +1069,7 @@ body {
 
 @media (min-width: 1300px) {
   .main-hero {
-    height: 600px;
+    height: 640px;
     background: url("../media/background-big.png") no-repeat, -webkit-gradient(linear, left bottom, left top, from(#2385a7));
     background: url("../media/background-big.png") no-repeat, linear-gradient(0deg, #2385a7);
     background-position: 0 center;

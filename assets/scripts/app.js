@@ -24,7 +24,7 @@ var vm = new Vue({
           pattern: /(^\d{5}$)|(^\d{5}-\d{4}$)/,
         },
         {
-          question: "How many new windows do you need installed?",
+          question: "What type of property do you own?",
           value: "",
           pattern: /[a-z0-9]/,
         },

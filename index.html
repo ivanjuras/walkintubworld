@@ -7,8 +7,11 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Thomspon Creek Quotes</title>
-    <meta name="description" content="" />
+    <title>Fast, Online Walk-In Tub Quotes</title>
+    <meta
+      name="description"
+      content="Walk-In Tub World™ offers fast, online quotes and a no-hassle purchasing process. No in-home appointment required. Find out how affordable your project can be today!"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap"
       rel="stylesheet"
@@ -68,9 +71,10 @@
                   v-if="formStep === 0"
                   class="form__section form-step--0"
                 >
-                  <p class="form__question">
-                    {{ formStepData[0].question }}
-                  </p>
+                  <p
+                    class="form__question"
+                    v-html="formStepData[0].question"
+                  ></p>
 
                   <img
                     class="map-marker"
@@ -182,6 +186,18 @@
                           >2</label
                         >
                       </div>
+
+                      <button
+                        v-show="showButton"
+                        @click.prevent="increaseFormStep"
+                        class="form-step__button"
+                        :class="{ 'form-step__button--float': formStep === 0, 'u-button-size-sm': smallerButtonSize}"
+                      >
+                        {{ buttonText }}
+                        <i
+                          class="form-step__arrow fas fa-long-arrow-alt-right"
+                        ></i>
+                      </button>
                     </div>
                   </div>
                 </div>

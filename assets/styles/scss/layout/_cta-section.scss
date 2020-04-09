@@ -3,3 +3,8 @@
 .cta-section {
   max-width: 52rem;
 }
+@media (min-width: 1300px) {
+  .cta-section {
+    width: 52rem;
+  }
+}

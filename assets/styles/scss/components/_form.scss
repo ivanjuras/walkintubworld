@@ -9,19 +9,19 @@
   align-items: center;
   position: relative;
   padding-bottom: 2rem;
-  height: 60vh;
 }
 
 .form__section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 60vh;
+  min-height: 50vh;
+  height: 50vh;
 }
 @media (min-width: 1300px) {
   .form__section {
-    min-height: 219px;
-    height: 219px;
+    min-height: 40vh;
+    height: 40vh;
   }
 }
 
