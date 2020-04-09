@@ -3,7 +3,7 @@ Vue.use(VueMask.VueMaskPlugin)
 var vm = new Vue({
   el: "#main-form",
 
-  data: function() {
+  data: function () {
     return {
       endPointURL:
         "https://hook.integromat.com/2fhtb23qdi1cci7qq6p5kxd24u1215d3", // Change your endpoint URL here
@@ -19,50 +19,50 @@ var vm = new Vue({
       finalObject: {},
       formStepData: [
         {
-          question: "Where do you need your new windows installed?",
+          question: "Where do you need your walk-in tub installed?",
           value: null,
-          pattern: /(^\d{5}$)|(^\d{5}-\d{4}$)/
+          pattern: /(^\d{5}$)|(^\d{5}-\d{4}$)/,
         },
         {
           question: "How many new windows do you need installed?",
           value: "",
-          pattern: /[a-z0-9]/
+          pattern: /[a-z0-9]/,
         },
         {
           question:
             'How soon do you want to <br class="desktop-only"> begin your project?',
           value: "",
-          pattern: /[a-z0-9]/
+          pattern: /[a-z0-9]/,
         },
         {
           question: "Are you interested in financing?",
           value: "",
-          pattern: /[a-z0-9]/
+          pattern: /[a-z0-9]/,
         },
         {
           question: "What is your project address?",
           value: "",
-          pattern: /[a-z0-9]/
+          pattern: /[a-z0-9]/,
         },
         {
           question: "Almost done",
           firstName: "",
           lastName: "",
-          pattern: /[a-z0-9]/
+          pattern: /[a-z0-9]/,
         },
         {
           question: "Final Step",
           phoneNumber: "",
           emailAddress: "",
           patternPhone: /^1?\s?(\([0-9]{3}\)[- ]?|[0-9]{3}[- ]?)[0-9]{3}[- ]?[0-9]{4}$/,
-          patternEmail: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        }
-      ]
+          patternEmail: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+        },
+      ],
     }
   },
 
   methods: {
-    increaseFormStep: function() {
+    increaseFormStep: function () {
       if (this.formStep === 0) {
         this.fireStep0Data()
         this.scrollToTop()
@@ -87,7 +87,7 @@ var vm = new Vue({
       }
     },
 
-    fireStep0Data: function() {
+    fireStep0Data: function () {
       if (
         this.formStepData[this.formStep].pattern.test(
           this.formStepData[this.formStep].value
@@ -99,13 +99,13 @@ var vm = new Vue({
               this.formStepData[0].value +
               "&key=AIzaSyB-tH8jD9dvfm8RaijJmjKt2K5XuEJkUcA"
           )
-          .then(function(response) {
+          .then(function (response) {
             console.log(response)
             var responseArray = response.data.results[0].address_components
-            responseArray.map(function(item) {
+            responseArray.map(function (item) {
               var types = item.types
 
-              types.map(function(type) {
+              types.map(function (type) {
                 if (type === "locality") {
                   vm.city = item.short_name
                 } else if (type === "neighborhood") {
@@ -120,7 +120,7 @@ var vm = new Vue({
             vm.formStep++
             vm.showError = false
           })
-          .catch(function(error) {
+          .catch(function (error) {
             vm.showError = true
             console.log(error)
           })
@@ -129,23 +129,23 @@ var vm = new Vue({
       }
     },
 
-    fireStep1Data: function() {
+    fireStep1Data: function () {
       this.standardStepFire()
     },
 
-    fireStep2Data: function() {
+    fireStep2Data: function () {
       this.standardStepFire()
     },
 
-    fireStep4Data: function() {
+    fireStep4Data: function () {
       this.standardStepFire()
     },
 
-    fireStep5Data: function() {
+    fireStep5Data: function () {
       this.standardStepFire()
     },
 
-    fireStep6Data: function() {
+    fireStep6Data: function () {
       if (
         this.formStepData[this.formStep].pattern.test(
           this.formStepData[this.formStep].firstName
@@ -164,7 +164,7 @@ var vm = new Vue({
       }
     },
 
-    fireStep7Data: function() {
+    fireStep7Data: function () {
       if (
         this.formStepData[this.formStep].patternPhone.test(
           this.formStepData[this.formStep].phoneNumber
@@ -184,18 +184,18 @@ var vm = new Vue({
           state: this.stateAbbreviation,
           numWindowsInstalled: this.formStepData[1].value,
           howSoon: this.formStepData[2].value,
-          financing: this.formStepData[3].value
+          financing: this.formStepData[3].value,
         }
 
         axios({
           method: "post",
           url: this.endPointURL,
-          data: this.finalObject
+          data: this.finalObject,
         })
-          .then(function(response) {
+          .then(function (response) {
             console.log(response)
           })
-          .catch(function(error) {
+          .catch(function (error) {
             console.log(error)
           })
 
@@ -203,7 +203,7 @@ var vm = new Vue({
         this.showError = false
         this.showConfirmation = false
 
-        setTimeout(function() {
+        setTimeout(function () {
           var headlineSection = document.querySelector(
             ".main-content__headline-section"
           )
@@ -215,7 +215,7 @@ var vm = new Vue({
       }
     },
 
-    standardStepFire: function() {
+    standardStepFire: function () {
       if (
         this.formStepData[this.formStep].pattern.test(
           this.formStepData[this.formStep].value
@@ -228,23 +228,23 @@ var vm = new Vue({
       }
     },
 
-    resetError: function() {
+    resetError: function () {
       this.showError = false
     },
 
-    onSelectRadio: function(event) {
+    onSelectRadio: function (event) {
       this.formStepData[this.formStep].value = event.target.value
       this.resetError()
     },
 
-    scrollToTop: function() {
+    scrollToTop: function () {
       window.scroll({
         top: 0,
         left: 0,
-        behavior: "smooth"
+        behavior: "smooth",
       })
-    }
-  }
+    },
+  },
 })
 
 // window.addEventListener(`scroll`, function() {

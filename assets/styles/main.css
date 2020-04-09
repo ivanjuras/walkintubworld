@@ -510,6 +510,7 @@ body {
           align-items: center;
   position: relative;
   padding-bottom: 2rem;
+  height: 60vh;
 }
 
 .form__section {
@@ -523,8 +524,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-height: 255px;
-  height: 255px;
+  height: 60vh;
 }
 
 @media (min-width: 1300px) {
@@ -542,20 +542,13 @@ body {
 
 /* Form question */
 .form__question {
-  font-size: 2rem;
+  font-size: 22px;
   max-width: 100%;
   color: #ffffff;
-  text-shadow: 1px 1px black;
+  text-shadow: 1px 1px 1px #555;
   text-align: center;
-  letter-spacing: 0.3px;
   font-weight: 400;
-  margin-bottom: 2rem;
-}
-
-@media (min-width: 600px) {
-  .form__question {
-    font-size: 1.625rem;
-  }
+  margin-bottom: 50px;
 }
 
 @media (min-width: 1300px) {
@@ -633,7 +626,8 @@ body {
 
 /* Form input */
 .form__input-text {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  text-align: center;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   color: #3e3e3f;
@@ -643,13 +637,12 @@ body {
   margin-bottom: 2.375rem;
   padding: 8px;
   border-radius: 4px;
-  border: 1px solid #4e514e;
   position: relative;
 }
 
 @media (min-width: 1300px) {
   .form__input-text {
-    font-size: 1.8rem;
+    font-size: 2rem;
     padding: 10px;
     width: 100%;
     width: 535px;
@@ -733,6 +726,7 @@ body {
 /********** Button **********/
 .form-step__button {
   position: relative;
+  margin-top: auto;
   background: #e55d01;
   color: #ffffff;
   width: 240px;
@@ -848,7 +842,7 @@ body {
 
 /********** Map Marker **********/
 .map-marker {
-  margin-bottom: 2.2rem;
+  margin-bottom: 30px;
 }
 
 /********** Reviews **********/
@@ -1066,7 +1060,7 @@ body {
 
 @media (min-width: 1300px) {
   .main-hero {
-    height: 670px;
+    height: 600px;
     background: url("../media/background-big.png") no-repeat, -webkit-gradient(linear, left bottom, left top, from(#2385a7));
     background: url("../media/background-big.png") no-repeat, linear-gradient(0deg, #2385a7);
     background-position: 0 center;
