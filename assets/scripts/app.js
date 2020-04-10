@@ -9,10 +9,10 @@ var vm = new Vue({
         "https://hook.integromat.com/2fhtb23qdi1cci7qq6p5kxd24u1215d3", // Change your endpoint URL here
       buttonText: "Next",
       showButton: true,
-      smallerButtonSize: false,
-      showConfirmation: false,
       formStep: 0,
       showError: false,
+      showConfirmation: false,
+      showArrow: true,
       city: "",
       stateAbbreviation: "",
       stateZipCode: "",
@@ -63,6 +63,8 @@ var vm = new Vue({
 
   methods: {
     increaseFormStep: function () {
+      console.log(this.formStep)
+
       if (this.formStep === 0) {
         this.fireStep0Data()
         this.scrollToTop()
@@ -73,16 +75,16 @@ var vm = new Vue({
         this.fireStep2Data()
         this.scrollToTop()
       } else if (this.formStep === 3) {
-        this.fireStep4Data()
+        this.fireStep3Data()
         this.scrollToTop()
       } else if (this.formStep === 4) {
-        this.fireStep5Data()
+        this.fireStep4Data()
         this.scrollToTop()
       } else if (this.formStep === 5) {
-        this.fireStep6Data()
+        this.fireStep5Data()
         this.scrollToTop()
       } else if (this.formStep === 6) {
-        this.fireStep7Data()
+        this.fireStep6Data()
         this.scrollToTop()
       }
     },
@@ -137,12 +139,21 @@ var vm = new Vue({
       this.standardStepFire()
     },
 
+    fireStep3Data: function () {
+      this.standardStepFire()
+    },
+
     fireStep4Data: function () {
       this.standardStepFire()
     },
 
     fireStep5Data: function () {
-      this.standardStepFire()
+      if (this.formStepData[5].features.length === 0) {
+        this.showError = true
+      } else {
+        this.resetError()
+        this.standardStepFire()
+      }
     },
 
     fireStep6Data: function () {
@@ -156,9 +167,6 @@ var vm = new Vue({
       ) {
         this.formStep++
         this.showError = false
-        this.showConfirmation = true
-        this.buttonText = "Get Estimate"
-        this.smallerButtonSize = true
       } else {
         this.showError = true
       }
@@ -237,17 +245,15 @@ var vm = new Vue({
     onSelectRadio: function (event) {
       this.formStepData[this.formStep].value = event.target.value
       this.resetError()
-      this.standardStepFire()
+      this.increaseFormStep()
     },
 
     onSelectCheckbox: function (event) {
       this.resetError()
-      console.log(this.formStepData[5].features)
 
       this.formStepData[5].featuresText = this.formStepData[5].features.join(
         ", "
       )
-      console.log(this.formStepData[5].featuresText)
     },
 
     scrollToTop: function () {

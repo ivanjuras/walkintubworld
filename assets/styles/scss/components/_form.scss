@@ -287,17 +287,17 @@
 /********** Errors **********/
 
 .error {
-  box-shadow: 0 0 0 5px #ab1c1a;
-  -webkit-box-shadow: 0 0 0 5px #ab1c1a;
+  box-shadow: 0 0 0 5px #f3403d;
+  -webkit-box-shadow: 0 0 0 5px #f3403d;
   -webkit-appearance: none;
-  color: red !important;
+  color: f3403d !important;
 }
 
 .error-message {
   position: absolute;
   top: -20px;
   z-index: 3;
-  color: red;
+  color: f3403d;
   background: white;
   padding: 0.3rem;
   font-size: 0.75rem;

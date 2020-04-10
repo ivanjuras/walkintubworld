@@ -3,8 +3,8 @@
 /***** Form Transitions *****/
 .fade-enter-active,
 .fade-leave-active {
-  -webkit-transition: opacity .4s;
-  transition: opacity .4s;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 
 .fade-enter,
@@ -12,18 +12,18 @@
   opacity: 0;
 }
 
-.fade-button-enter-active {
+.fade-confirmation-enter-active {
   -webkit-transition: opacity 2s;
   transition: opacity 2s;
 }
 
-.fade-button-leave-active {
+.fade-confirmation-leave-active {
   -webkit-transition: opacity 0.4s;
   transition: opacity 0.4s;
 }
 
-.fade-button-enter,
-.fade-button-leave-to {
+.fade-confirmation-enter,
+.fade-confirmation-leave-to {
   opacity: 0;
 }
 
@@ -758,17 +758,17 @@ body {
 
 /********** Errors **********/
 .error {
-  box-shadow: 0 0 0 5px #ab1c1a;
-  -webkit-box-shadow: 0 0 0 5px #ab1c1a;
+  box-shadow: 0 0 0 5px #f3403d;
+  -webkit-box-shadow: 0 0 0 5px #f3403d;
   -webkit-appearance: none;
-  color: red !important;
+  color: f3403d !important;
 }
 
 .error-message {
   position: absolute;
   top: -20px;
   z-index: 3;
-  color: red;
+  color: f3403d;
   background: white;
   padding: 0.3rem;
   font-size: 0.75rem;

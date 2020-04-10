@@ -96,10 +96,13 @@
                   v-show="showButton"
                   @click.prevent="increaseFormStep"
                   class="form-step__button"
-                  :class="{ 'form-step__button--float': formStep === 0, 'u-button-size-sm': smallerButtonSize}"
+                  :class="{ 'form-step__button--float': formStep === 0}"
                 >
                   {{ buttonText }}
-                  <i class="form-step__arrow fas fa-long-arrow-alt-right"></i>
+                  <i
+                    v-show="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
                 </button>
               </div>
 
@@ -514,11 +517,34 @@
                   v-show="showButton"
                   @click.prevent="increaseFormStep"
                   class="form-step__button"
-                  :class="{ 'form-step__button--float': formStep === 0, 'u-button-size-sm': smallerButtonSize}"
+                  :class="{ 'form-step__button--float': formStep === 0 }"
                 >
                   {{ buttonText }}
-                  <i class="form-step__arrow fas fa-long-arrow-alt-right"></i>
+                  <i
+                    v-if="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
                 </button>
+              </div>
+
+              <!-- Form Step #6 -->
+              <div key="7" v-if="formStep === 7">
+                <div class="thank-you">
+                  <p>Hi {{ formStepData[5].firstName }},</p>
+                  <p>Thank you for contacting Thompson Creek!</p>
+                  <p>
+                    A Window Replacement Specialist will call you to schedule
+                    your appointment.
+                  </p>
+                  <p>
+                    Take advantage of buy one get one 40% off during your
+                    written price estimate.
+                  </p>
+                  <p>In the meantime, download your Free Brochure.</p>
+                  <a class="download-brochure" href="/download/"
+                    >Download Brochure</a
+                  >
+                </div>
               </div>
 
               <!-- Form Step #6 -->
@@ -562,34 +588,14 @@
                   </div>
                 </div>
               </div>
-
-              <!-- Form Step #7 -->
-              <div key="7" v-if="formStep === 7">
-                <div class="thank-you">
-                  <p>Hi {{ formStepData[5].firstName }},</p>
-                  <p>Thank you for contacting Thompson Creek!</p>
-                  <p>
-                    A Window Replacement Specialist will call you to schedule
-                    your appointment.
-                  </p>
-                  <p>
-                    Take advantage of buy one get one 40% off during your
-                    written price estimate.
-                  </p>
-                  <p>In the meantime, download your Free Brochure.</p>
-                  <a class="download-brochure" href="/download/"
-                    >Download Brochure</a
-                  >
-                </div>
-              </div>
             </transition>
-            <!-- <transition name="fade-button">
-                <p v-show="showConfirmation" class="confirmation">
-                  By completing the form, you’re giving us permission to call,
-                  email, or text you with information on our products and
-                  services using the information you provide.
-                </p>
-              </transition> -->
+            <transition name="fade-confirmation">
+              <p v-show="showConfirmation" class="confirmation">
+                By completing the form, you’re giving us permission to call,
+                email, or text you with information on our products and services
+                using the information you provide.
+              </p>
+            </transition>
           </form>
         </div>
       </div>
