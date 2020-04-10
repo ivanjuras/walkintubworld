@@ -54,425 +54,543 @@
     <section class="main-hero">
       <div class="container u-flex-column u-flex-lg-row">
         <div class="cta-section">
-          <div class="main-content__headline-section">
-            <h1 class="main-headline u-desktop-only">
-              Get Your Simple &amp;<br />Accurate Quote Now
-            </h1>
-            <h1 class="main-headline u-mobile-only">
-              Fast, Online Quotes
-            </h1>
+          <h1 class="main-headline u-desktop-only">
+            Get Your Simple &amp;<br />Accurate Quote Now
+          </h1>
+          <h1 class="main-headline u-mobile-only">
+            Fast, Online Quotes
+          </h1>
 
-            <!-- Form here -->
-            <form class="form" id="main-form">
-              <transition name="fade" mode="out-in">
-                <!-- Form Step #0 -->
-                <div
-                  key="0"
-                  v-if="formStep === 0"
-                  class="form__section form-step--0"
-                >
-                  <p
-                    class="form__question"
-                    v-html="formStepData[0].question"
-                  ></p>
+          <!-- Form here -->
+          <form class="form" id="main-form">
+            <transition name="fade" mode="out-in">
+              <!-- Form Step #0 -->
+              <div
+                key="0"
+                v-if="formStep === 0"
+                class="form__section form-step--0"
+              >
+                <p class="form__question" v-html="formStepData[0].question"></p>
 
-                  <img
-                    class="map-marker"
-                    src="./assets/media/icon-marker.png"
-                    alt="Map Marker"
+                <img
+                  class="map-marker"
+                  src="./assets/media/icon-marker.png"
+                  alt="Map Marker"
+                />
+
+                <div class="form__field form__field--md-row">
+                  <input
+                    v-model="formStepData[0].value"
+                    @keyup="resetError"
+                    class="form__input-text zip-code"
+                    :class="{ error: showError }"
+                    type="text"
+                    pattern="\d*"
+                    v-mask="'#####'"
+                    maxlength="5"
+                    placeholder="Enter Zip Code"
                   />
-
-                  <div class="form__field form__field--md-row">
-                    <input
-                      v-model="formStepData[0].value"
-                      @keyup="resetError"
-                      class="form__input-text zip-code"
-                      :class="{ error: showError }"
-                      type="text"
-                      pattern="\d*"
-                      v-mask="'#####'"
-                      maxlength="5"
-                      placeholder="Enter Zip Code"
-                    />
-                  </div>
-
-                  <button
-                    v-show="showButton"
-                    @click.prevent="increaseFormStep"
-                    class="form-step__button"
-                    :class="{ 'form-step__button--float': formStep === 0, 'u-button-size-sm': smallerButtonSize}"
-                  >
-                    {{ buttonText }}
-                    <i class="form-step__arrow fas fa-long-arrow-alt-right"></i>
-                  </button>
                 </div>
 
-                <!-- Form Step #1 -->
-                <div
-                  key="1"
-                  v-if="formStep === 1"
-                  class="form__section form-step--1"
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                  :class="{ 'form-step__button--float': formStep === 0, 'u-button-size-sm': smallerButtonSize}"
                 >
-                  <p class="form__question">
-                    {{ formStepData[1].question }}
-                  </p>
+                  {{ buttonText }}
+                  <i class="form-step__arrow fas fa-long-arrow-alt-right"></i>
+                </button>
+              </div>
 
-                  <div class="form__field">
-                    <div class="input-radios">
-                      <div class="input-radio__block">
-                        <input
-                          @change="onSelectRadio"
-                          value="10+"
-                          name="window-number"
-                          type="radio"
-                          class="input-radio__item"
-                          id="10plus"
-                        />
-                        <label
-                          :class="{ error: showError }"
-                          class="input-radio__label"
-                          for="10plus"
-                          >10+</label
-                        >
-                      </div>
+              <!-- Form Step #1 -->
+              <div
+                key="1"
+                v-if="formStep === 1"
+                class="form__section form-step--1"
+              >
+                <p class="form__question">
+                  {{ formStepData[1].question }}
+                </p>
 
-                      <div class="input-radio__block">
-                        <input
-                          @change="onSelectRadio"
-                          value="6-9"
-                          name="window-number"
-                          type="radio"
-                          class="input-radio__item"
-                          id="6-9"
-                        />
-                        <label
-                          :class="{ error: showError }"
-                          class="input-radio__label"
-                          for="6-9"
-                          >6 - 9</label
-                        >
-                      </div>
-
-                      <div class="input-radio__block">
-                        <input
-                          @change="onSelectRadio"
-                          value="3-5"
-                          name="window-number"
-                          type="radio"
-                          class="input-radio__item"
-                          id="3-5"
-                        />
-                        <label
-                          :class="{ error: showError }"
-                          class="input-radio__label"
-                          for="3-5"
-                          >3 - 5</label
-                        >
-                      </div>
-
-                      <div class="input-radio__block">
-                        <input
-                          @change="onSelectRadio"
-                          value="2"
-                          name="window-number"
-                          type="radio"
-                          class="input-radio__item"
-                          id="2"
-                        />
-                        <label
-                          :class="{ error: showError }"
-                          class="input-radio__label"
-                          for="2"
-                          >2</label
-                        >
-                      </div>
-
-                      <button
-                        v-show="showButton"
-                        @click.prevent="increaseFormStep"
-                        class="form-step__button"
-                        :class="{ 'form-step__button--float': formStep === 0, 'u-button-size-sm': smallerButtonSize}"
-                      >
-                        {{ buttonText }}
-                        <i
-                          class="form-step__arrow fas fa-long-arrow-alt-right"
-                        ></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Form Step #2 -->
-                <div
-                  key="2"
-                  v-if="formStep === 2"
-                  class="form__section form-step--2"
-                >
-                  <p
-                    class="form__question"
-                    v-html="formStepData[2].question"
-                  ></p>
-
-                  <div class="form__field">
-                    <div class="input-radios">
-                      <div class="input-radio__block">
-                        <input
-                          @change="onSelectRadio"
-                          value="Within 1 Week"
-                          name="how-soon"
-                          type="radio"
-                          class="input-radio__item"
-                          id="within-1-week"
-                        />
-                        <label
-                          :class="{ error: showError }"
-                          class="input-radio__label"
-                          for="within-1-week"
-                          >Within 1 Week</label
-                        >
-                      </div>
-
-                      <div class="input-radio__block">
-                        <input
-                          @change="onSelectRadio"
-                          value="1 - 2 Weeks"
-                          name="how-soon"
-                          type="radio"
-                          class="input-radio__item"
-                          id="1-2-weeks"
-                        />
-                        <label
-                          :class="{ error: showError }"
-                          class="input-radio__label"
-                          for="1-2-weeks"
-                          >1 - 2 Weeks</label
-                        >
-                      </div>
-
-                      <div class="input-radio__block">
-                        <input
-                          @change="onSelectRadio"
-                          value="More Than 2 Weeks"
-                          name="how-soon"
-                          type="radio"
-                          class="input-radio__item"
-                          id="more-than-2-weeks"
-                        />
-                        <label
-                          :class="{ error: showError }"
-                          class="input-radio__label"
-                          for="more-than-2-weeks"
-                          >More Than 2 Weeks</label
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Form Step #3 -->
-                <div
-                  key="3"
-                  v-if="formStep === 3"
-                  class="form__section form-step--3"
-                >
-                  <p class="form__question">
-                    {{ formStepData[3].question }}
-                  </p>
-
-                  <div class="form__field">
-                    <div class="input-radios input-radios--column">
-                      <div class="input-radio__block">
-                        <input
-                          @change="onSelectRadio"
-                          value="Yes"
-                          name="financing"
-                          type="radio"
-                          class="input-radio__item"
-                          id="financing-yes"
-                        />
-                        <label
-                          :class="{ error: showError }"
-                          class="input-radio__label"
-                          for="financing-yes"
-                          >Yes</label
-                        >
-                      </div>
-
-                      <div class="input-radio__block">
-                        <input
-                          @change="onSelectRadio"
-                          value="No"
-                          name="financing"
-                          type="radio"
-                          class="input-radio__item"
-                          id="financing-no"
-                        />
-                        <label
-                          :class="{ error: showError }"
-                          class="input-radio__label"
-                          for="financing-no"
-                          >No</label
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Form Step #4 -->
-                <div
-                  key="4"
-                  v-if="formStep === 4"
-                  class="form__section form-step--4"
-                >
-                  <p class="form__question">
-                    {{ formStepData[4].question }}
-                  </p>
-
-                  <div class="form__field">
-                    <div class="form__field">
+                <div class="form__field">
+                  <div class="input-radios">
+                    <div class="input-radio__block">
                       <input
-                        v-model="formStepData[4].value"
-                        @keyup="resetError"
+                        @change="onSelectRadio"
+                        value="House"
+                        name="property-type"
+                        type="radio"
+                        class="input-radio__item"
+                        id="property-type-house"
+                      />
+                      <label
                         :class="{ error: showError }"
-                        class="form__input-text street-address"
-                        type="text"
-                        placeholder="Street Address"
-                      />
+                        class="input-radio__label"
+                        for="property-type-house"
+                        >House</label
+                      >
                     </div>
-                    <div class="form__field form__field--address">
+
+                    <div class="input-radio__block">
                       <input
-                        v-model="city"
-                        class="form__input-text city"
-                        type="text"
-                        placeholder="City"
+                        @change="onSelectRadio"
+                        value="Condo"
+                        name="property-type"
+                        type="radio"
+                        class="input-radio__item"
+                        id="property-type-condo"
                       />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="property-type-condo"
+                        >Condo</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
                       <input
-                        v-model="stateAbbreviation"
-                        maxlength="2"
-                        class="form__input-text state"
-                        type="text"
-                        placeholder="State"
+                        @change="onSelectRadio"
+                        value="Mobile home"
+                        name="property-type"
+                        type="radio"
+                        class="input-radio__item"
+                        id="property-type-mobile-home"
                       />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="property-type-mobile-home"
+                        >Mobile home</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Step #2 -->
+              <div
+                key="2"
+                v-if="formStep === 2"
+                class="form__section form-step--2"
+              >
+                <p class="form__question" v-html="formStepData[2].question"></p>
+
+                <div class="form__field">
+                  <div class="input-radios">
+                    <div class="input-radio__block">
                       <input
-                        v-model="stateZipCode"
-                        class="form__input-text zip-prefilled"
-                        type="text"
-                        v-mask="'#####'"
-                        maxlength="5"
-                        placeholder="ZIP"
+                        @change="onSelectRadio"
+                        value="1st floor"
+                        name="bathroom-location"
+                        type="radio"
+                        class="input-radio__item"
+                        id="1st-floor"
                       />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="1st-floor"
+                        >1st floor</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="2nd floor"
+                        name="bathroom-location"
+                        type="radio"
+                        class="input-radio__item"
+                        id="2nd-floor"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="2nd-floor"
+                        >2nd floor</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="3rd floor"
+                        name="bathroom-location"
+                        type="radio"
+                        class="input-radio__item"
+                        id="3rd-floor"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="3rd-floor"
+                        >3rd floor</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Basement"
+                        name="bathroom-location"
+                        type="radio"
+                        class="input-radio__item"
+                        id="basement"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="basement"
+                        >Basement</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Step #3 -->
+              <div
+                key="3"
+                v-if="formStep === 3"
+                class="form__section form-step--3"
+              >
+                <p class="form__question" v-html="formStepData[3].question">
+                  {{ formStepData[3].question }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="2"
+                        name="how-many-doors"
+                        type="radio"
+                        class="input-radio__item"
+                        id="2-doors"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="2-doors"
+                        >2</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="3"
+                        name="how-many-doors"
+                        type="radio"
+                        class="input-radio__item"
+                        id="3-doors"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="3-doors"
+                        >3</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="4 or more"
+                        name="how-many-doors"
+                        type="radio"
+                        class="input-radio__item"
+                        id="4-or-more-doors"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="4-or-more-doors"
+                        >4 or more</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Step #4 -->
+              <div
+                key="4"
+                v-if="formStep === 4"
+                class="form__section form-step--4"
+              >
+                <p class="form__question">
+                  {{ formStepData[4].question }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Left side"
+                        name="where-faucets"
+                        type="radio"
+                        class="input-radio__item"
+                        id="left-side-faucets"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="left-side-faucets"
+                        >Left side</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Right side"
+                        name="where-faucets"
+                        type="radio"
+                        class="input-radio__item"
+                        id="right-side-faucets"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="right-side-faucets"
+                        >Right side</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Center"
+                        name="where-faucets"
+                        type="radio"
+                        class="input-radio__item"
+                        id="center-side-faucets"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="center-side-faucets"
+                        >Center</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Step #5 -->
+              <div
+                key="5"
+                v-if="formStep === 5"
+                class="form__section form-step--5"
+              >
+                <p class="form__question">
+                  {{ formStepData[5].question }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-checkboxes">
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Soaker"
+                        v-model="formStepData[5].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-soaker"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-checkbox__label"
+                        for="feature-soaker"
+                      >
+                        Soaker
+                      </label>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Water jets"
+                        v-model="formStepData[5].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-water-jets"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-checkbox__label"
+                        for="feature-water-jets"
+                      >
+                        Water jets
+                      </label>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Air jets"
+                        v-model="formStepData[5].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-air-jets"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-checkbox__label"
+                        for="feature-air-jets"
+                      >
+                        Air jets
+                      </label>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Aromatherapy"
+                        v-model="formStepData[5].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-aromatherapy"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-checkbox__label"
+                        for="feature-aromatherapy"
+                      >
+                        Aromatherapy
+                      </label>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Chromotherapy"
+                        v-model="formStepData[5].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-chromotherapy"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-checkbox__label"
+                        for="feature-chromotherapy"
+                      >
+                        Chromotherapy
+                      </label>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Other"
+                        v-model="formStepData[5].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-other"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-checkbox__label"
+                        for="feature-other"
+                      >
+                        Other
+                      </label>
                     </div>
                   </div>
                 </div>
 
-                <!-- Form Step #5 -->
-                <div
-                  key="5"
-                  v-if="formStep === 5"
-                  class="form__section form-step--5"
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                  :class="{ 'form-step__button--float': formStep === 0, 'u-button-size-sm': smallerButtonSize}"
                 >
-                  <p class="form__question">
-                    {{ formStepData[5].question }}
-                  </p>
+                  {{ buttonText }}
+                  <i class="form-step__arrow fas fa-long-arrow-alt-right"></i>
+                </button>
+              </div>
 
-                  <div class="form__field">
-                    <div class="input-radios input-radios--column">
-                      <div class="input-radio__block">
+              <!-- Form Step #6 -->
+              <div
+                key="6"
+                v-if="formStep === 6"
+                class="form__section form-step--6"
+              >
+                <p class="form__question">
+                  {{ formStepData[6].question }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <span class="form__input-text--phone">
                         <input
-                          v-model="formStepData[5].firstName"
+                          v-model="formStepData[6].phoneNumber"
                           @keyup="resetError"
                           :class="{ error: showError }"
-                          class="form__input-text first-name"
+                          v-mask="'(###) ###-####'"
+                          class="form__input-text phone-number"
                           type="text"
-                          placeholder="First Name"
+                          placeholder="Phone"
                         />
-                      </div>
+                      </span>
+                    </div>
 
-                      <div class="input-radio__block">
+                    <div class="input-radio__block">
+                      <span class="form__input-text--email">
                         <input
-                          v-model="formStepData[5].lastName"
+                          v-model="formStepData[6].emailAddress"
                           @keyup="resetError"
                           :class="{ error: showError }"
-                          class="form__input-text last-name"
+                          class="form__input-text email-address"
                           type="text"
-                          placeholder="Last Name"
+                          placeholder="Email"
                         />
-                      </div>
+                      </span>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <!-- Form Step #6 -->
-                <div
-                  key="6"
-                  v-if="formStep === 6"
-                  class="form__section form-step--6"
-                >
-                  <p class="form__question">
-                    {{ formStepData[6].question }}
+              <!-- Form Step #7 -->
+              <div key="7" v-if="formStep === 7">
+                <div class="thank-you">
+                  <p>Hi {{ formStepData[5].firstName }},</p>
+                  <p>Thank you for contacting Thompson Creek!</p>
+                  <p>
+                    A Window Replacement Specialist will call you to schedule
+                    your appointment.
                   </p>
-
-                  <div class="form__field">
-                    <div class="input-radios input-radios--column">
-                      <div class="input-radio__block">
-                        <span class="form__input-text--phone">
-                          <input
-                            v-model="formStepData[6].phoneNumber"
-                            @keyup="resetError"
-                            :class="{ error: showError }"
-                            v-mask="'(###) ###-####'"
-                            class="form__input-text phone-number"
-                            type="text"
-                            placeholder="Phone"
-                          />
-                        </span>
-                      </div>
-
-                      <div class="input-radio__block">
-                        <span class="form__input-text--email">
-                          <input
-                            v-model="formStepData[6].emailAddress"
-                            @keyup="resetError"
-                            :class="{ error: showError }"
-                            class="form__input-text email-address"
-                            type="text"
-                            placeholder="Email"
-                          />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                  <p>
+                    Take advantage of buy one get one 40% off during your
+                    written price estimate.
+                  </p>
+                  <p>In the meantime, download your Free Brochure.</p>
+                  <a class="download-brochure" href="/download/"
+                    >Download Brochure</a
+                  >
                 </div>
-
-                <!-- Form Step #7 -->
-                <div key="7" v-if="formStep === 7">
-                  <div class="thank-you">
-                    <p>Hi {{ formStepData[5].firstName }},</p>
-                    <p>Thank you for contacting Thompson Creek!</p>
-                    <p>
-                      A Window Replacement Specialist will call you to schedule
-                      your appointment.
-                    </p>
-                    <p>
-                      Take advantage of buy one get one 40% off during your
-                      written price estimate.
-                    </p>
-                    <p>In the meantime, download your Free Brochure.</p>
-                    <a class="download-brochure" href="/download/"
-                      >Download Brochure</a
-                    >
-                  </div>
-                </div>
-              </transition>
-              <!-- <transition name="fade-button">
+              </div>
+            </transition>
+            <!-- <transition name="fade-button">
                 <p v-show="showConfirmation" class="confirmation">
                   By completing the form, you’re giving us permission to call,
                   email, or text you with information on our products and
                   services using the information you provide.
                 </p>
               </transition> -->
-            </form>
-          </div>
+          </form>
         </div>
       </div>
     </section>

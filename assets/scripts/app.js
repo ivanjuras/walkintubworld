@@ -19,7 +19,7 @@ var vm = new Vue({
       finalObject: {},
       formStepData: [
         {
-          question: "Where do you need your walk-in tub installed?",
+          question: "Where do you need your<br>walk-in tub installed?",
           value: null,
           pattern: /(^\d{5}$)|(^\d{5}-\d{4}$)/,
         },
@@ -29,25 +29,25 @@ var vm = new Vue({
           pattern: /[a-z0-9]/,
         },
         {
+          question: "Where is your bathroom located?",
+          value: "",
+          pattern: /[a-z0-9]/,
+        },
+        {
           question:
-            'How soon do you want to <br class="desktop-only"> begin your project?',
+            "How many doors will the installers need to pass through to reach your bathing area?",
           value: "",
           pattern: /[a-z0-9]/,
         },
         {
-          question: "Are you interested in financing?",
+          question: "Where are the faucets in your bathtub/shower?",
           value: "",
           pattern: /[a-z0-9]/,
         },
         {
-          question: "What is your project address?",
-          value: "",
-          pattern: /[a-z0-9]/,
-        },
-        {
-          question: "Almost done",
-          firstName: "",
-          lastName: "",
+          question: "What features do you need?",
+          features: [],
+          featuresText: "",
           pattern: /[a-z0-9]/,
         },
         {
@@ -100,7 +100,7 @@ var vm = new Vue({
               "&key=AIzaSyB-tH8jD9dvfm8RaijJmjKt2K5XuEJkUcA"
           )
           .then(function (response) {
-            console.log(response)
+            console.log(response.data)
             var responseArray = response.data.results[0].address_components
             responseArray.map(function (item) {
               var types = item.types
@@ -216,6 +216,8 @@ var vm = new Vue({
     },
 
     standardStepFire: function () {
+      console.log(this.formStepData[this.formStep].value)
+
       if (
         this.formStepData[this.formStep].pattern.test(
           this.formStepData[this.formStep].value
@@ -235,6 +237,17 @@ var vm = new Vue({
     onSelectRadio: function (event) {
       this.formStepData[this.formStep].value = event.target.value
       this.resetError()
+      this.standardStepFire()
+    },
+
+    onSelectCheckbox: function (event) {
+      this.resetError()
+      console.log(this.formStepData[5].features)
+
+      this.formStepData[5].featuresText = this.formStepData[5].features.join(
+        ", "
+      )
+      console.log(this.formStepData[5].featuresText)
     },
 
     scrollToTop: function () {
