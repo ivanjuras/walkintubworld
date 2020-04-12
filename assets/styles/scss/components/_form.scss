@@ -16,8 +16,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 455px;
-  height: 455px;
+  min-height: 400px;
+  height: 400px;
 }
 @media (min-width: 1300px) {
   .form__section {
@@ -62,13 +62,13 @@
   text-align: center;
   font-weight: 400;
   margin-bottom: 3rem;
+  margin-top: -3rem;
 }
 @media (min-width: 1300px) {
   .form__sub-question {
     max-width: 100%;
     font-size: 2.4rem;
     font-weight: 300;
-    margin-top: -3rem;
     text-shadow: none;
     padding: 0 6rem;
   }

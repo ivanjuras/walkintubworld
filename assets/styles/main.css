@@ -459,8 +459,8 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  min-height: 455px;
-  height: 455px;
+  min-height: 400px;
+  height: 400px;
 }
 
 @media (min-width: 1300px) {
@@ -507,6 +507,7 @@ body {
   text-align: center;
   font-weight: 400;
   margin-bottom: 3rem;
+  margin-top: -3rem;
 }
 
 @media (min-width: 1300px) {
@@ -514,7 +515,6 @@ body {
     max-width: 100%;
     font-size: 2.4rem;
     font-weight: 300;
-    margin-top: -3rem;
     text-shadow: none;
     padding: 0 6rem;
   }
