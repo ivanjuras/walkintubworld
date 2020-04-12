@@ -461,7 +461,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   min-height: 50vh;
-  height: 50vh;
 }
 
 @media (min-width: 1300px) {
