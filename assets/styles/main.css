@@ -1104,7 +1104,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: url("../media/background-mobile.png") top left no-repeat;
+  background: url("../media/background-mobile.png") fixed;
   background-size: cover;
 }
 
