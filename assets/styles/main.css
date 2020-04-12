@@ -1103,7 +1103,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: url("../media/background-mobile.png") center no-repeat;
+  background: url("../media/background-mobile.png") top center no-repeat;
   background-size: cover;
 }
 
