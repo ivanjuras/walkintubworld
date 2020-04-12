@@ -18,40 +18,120 @@ var vm = new Vue({
       stateZipCode: "",
       finalObject: {},
       formStepData: [
+        // ----- Step 0
         {
-          question: "Where do you need your<br>walk-in tub installed?",
+          question: "Where do you need your walk-in tub installed?",
           value: null,
           pattern: /(^\d{5}$)|(^\d{5}-\d{4}$)/,
         },
+
+        // Step 1
         {
           question: "What type of property do you own?",
           value: "",
           pattern: /[a-z0-9]/,
         },
+
+        // Step 2
         {
           question: "Where is your bathroom located?",
           value: "",
           pattern: /[a-z0-9]/,
         },
+
+        // Step 3
         {
           question:
             "How many doors will the installers need to pass through to reach your bathing area?",
           value: "",
           pattern: /[a-z0-9]/,
         },
+
+        // Step 4
         {
           question: "Where are the faucets in your bathtub/shower?",
           value: "",
           pattern: /[a-z0-9]/,
         },
+
+        // ----- Step 5
         {
           question: "What features do you need?",
+          subQuestion: "(check all that apply)",
           features: [],
           featuresText: "",
           pattern: /[a-z0-9]/,
         },
+
+        // Step 6
         {
-          question: "Final Step",
+          question: "What kind of water heater do you have?",
+          value: "",
+          pattern: /[a-z0-9]/,
+        },
+
+        // ------- Step 7
+        {
+          question: "What is the gallon capacity of your water heater?",
+          gallonNumber: "",
+          gallonDontKnow: "",
+          patternGallonNumber: /[0-9]{3}/,
+          patternGallonDontKnow: /[a-z0-9]/,
+        },
+
+        // Step 8
+        {
+          question: "Do you use a wheelchair in your home?",
+          value: "",
+          pattern: /[a-z0-9]/,
+        },
+
+        // Step 9
+        {
+          question: "Do you need a bariatric model?",
+          subQuestion: "(designed for buyers over 300 lbs)",
+          value: "",
+          pattern: /[a-z0-9]/,
+        },
+
+        // ----- Step 10
+        {
+          question: "Time for 3 measurements!",
+          subQuestion: "(enter in inches please)",
+          bathroomDoorFrameWidth: "",
+          bathtubShowerLength: "",
+          bathtubShowerWidth: "",
+          patternMeasures: /[0-9]{3}/,
+        },
+
+        // Step 11
+        {
+          question:
+            "If you accept our quote, how would you pay for your walk-in tub?",
+          value: "",
+          pattern: /[a-z0-9]/,
+        },
+
+        // ----- Step 12
+        {
+          question: "Time to post 3 photos!",
+          subQuestion: "(wide angle shots please)",
+          bathtubPhotoURL: "",
+          bathroomDoorFramePhotoURL: "",
+          waterHeaterPhotoURL: "",
+        },
+
+        // ----- Step 13
+        {
+          question: "Almost done!",
+          firstName: "",
+          lastName: "",
+          pattern: /[a-z0-9]/,
+        },
+
+        // ----- Step 14
+        {
+          question: "Last step!",
           phoneNumber: "",
           emailAddress: "",
           patternPhone: /^1?\s?(\([0-9]{3}\)[- ]?|[0-9]{3}[- ]?)[0-9]{3}[- ]?[0-9]{4}$/,
@@ -65,31 +145,50 @@ var vm = new Vue({
     increaseFormStep: function () {
       console.log(this.formStep)
 
-      if (this.formStep === 0) {
-        this.fireStep0Data()
-        this.scrollToTop()
-      } else if (this.formStep === 1) {
-        this.fireStep1Data()
-        this.scrollToTop()
-      } else if (this.formStep === 2) {
-        this.fireStep2Data()
-        this.scrollToTop()
-      } else if (this.formStep === 3) {
-        this.fireStep3Data()
-        this.scrollToTop()
-      } else if (this.formStep === 4) {
-        this.fireStep4Data()
-        this.scrollToTop()
-      } else if (this.formStep === 5) {
-        this.fireStep5Data()
-        this.scrollToTop()
-      } else if (this.formStep === 6) {
-        this.fireStep6Data()
-        this.scrollToTop()
+      switch (this.formStep) {
+        case 0:
+          this.fireStep0()
+          this.scrollToTop()
+          break
+
+        case 5:
+          this.fireStep5()
+          this.scrollToTop()
+          break
+
+        case 7:
+          this.fireStep7()
+          this.scrollToTop()
+          break
+
+        case 10:
+          this.fireStep10()
+          this.scrollToTop()
+          break
+
+        case 12:
+          this.fireStep12()
+          this.scrollToTop()
+          break
+
+        case 13:
+          this.fireStep13()
+          this.scrollToTop()
+          break
+
+        case 14:
+          this.fireStep14()
+          this.scrollToTop()
+          break
+
+        default:
+          this.standardStepFire()
+          this.scrollToTop()
+          break
       }
     },
 
-    fireStep0Data: function () {
+    fireStep0: function () {
       if (
         this.formStepData[this.formStep].pattern.test(
           this.formStepData[this.formStep].value
@@ -131,24 +230,8 @@ var vm = new Vue({
       }
     },
 
-    fireStep1Data: function () {
-      this.standardStepFire()
-    },
-
-    fireStep2Data: function () {
-      this.standardStepFire()
-    },
-
-    fireStep3Data: function () {
-      this.standardStepFire()
-    },
-
-    fireStep4Data: function () {
-      this.standardStepFire()
-    },
-
-    fireStep5Data: function () {
-      if (this.formStepData[5].features.length === 0) {
+    fireStep5: function () {
+      if (this.formStepData[this.formStep].features.length === 0) {
         this.showError = true
       } else {
         this.resetError()
@@ -156,7 +239,20 @@ var vm = new Vue({
       }
     },
 
-    fireStep6Data: function () {
+    fireStep7: function () {
+      console.log(this.formStepData[7].gallonNumber)
+      console.log(this.formStepData[7].gallonUnknown)
+    },
+
+    fireStep10: function () {
+      this.standardStepFire()
+    },
+
+    fireStep12: function () {
+      this.standardStepFire()
+    },
+
+    fireStep13: function () {
       if (
         this.formStepData[this.formStep].pattern.test(
           this.formStepData[this.formStep].firstName
@@ -172,7 +268,7 @@ var vm = new Vue({
       }
     },
 
-    fireStep7Data: function () {
+    fireStep14: function () {
       if (
         this.formStepData[this.formStep].patternPhone.test(
           this.formStepData[this.formStep].phoneNumber
@@ -209,15 +305,6 @@ var vm = new Vue({
 
         this.formStep++
         this.showError = false
-        this.showConfirmation = false
-
-        setTimeout(function () {
-          var headlineSection = document.querySelector(
-            ".main-content__headline-section"
-          )
-          headlineSection.parentNode.removeChild(headlineSection)
-          vm.showButton = false
-        }, 400)
       } else {
         this.showError = true
       }
@@ -265,16 +352,3 @@ var vm = new Vue({
     },
   },
 })
-
-// window.addEventListener(`scroll`, function() {
-//   var mainHeader = document.querySelector(".main-header")
-//   var mainHero = document.querySelector(".main-hero")
-
-//   if (window.scrollY >= 100) {
-//     mainHeader.classList.add("u-sm-fixed")
-//     mainHero.classList.add("u-pt-100")
-//   } else {
-//     mainHeader.classList.remove("u-sm-fixed")
-//     mainHero.classList.remove("u-pt-100")
-//   }
-// })

@@ -1,12 +1,12 @@
 /********** Utilities **********/
 
-@media(max-width: 1300px) {
+@media (max-width: 1300px) {
   .u-desktop-only {
     display: none !important;
   }
 }
 
-@media(min-width: 1300px) {
+@media (min-width: 1300px) {
   .u-mobile-only {
     display: none !important;
   }
@@ -29,7 +29,7 @@
   align-items: center;
 }
 
-@media(min-width: 1300px) {
+@media (min-width: 1300px) {
   .u-flex-lg-row {
     flex-direction: row;
     justify-content: flex-end !important;
@@ -39,13 +39,13 @@
 .u-button-size-sm {
   font-size: 2.2rem !important;
 }
-@media(min-width: 1300px) {
+@media (min-width: 1300px) {
   .u-button-size-sm {
     font-size: 3.2rem !important;
   }
 }
 
-@media(max-width: 1299px) {
+@media (max-width: 1299px) {
   .u-sm-fixed {
     position: fixed !important;
     top: 0;
@@ -53,4 +53,9 @@
     right: 0;
     background: #fff;
   }
+}
+
+.u-h-padding-none {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }

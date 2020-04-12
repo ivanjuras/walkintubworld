@@ -259,7 +259,10 @@
                 v-if="formStep === 3"
                 class="form__section form-step--3"
               >
-                <p class="form__question" v-html="formStepData[3].question">
+                <p
+                  class="form__question u-h-padding-none"
+                  v-html="formStepData[3].question"
+                >
                   {{ formStepData[3].question }}
                 </p>
 
@@ -393,6 +396,9 @@
               >
                 <p class="form__question">
                   {{ formStepData[5].question }}
+                </p>
+                <p class="form__sub-question">
+                  {{ formStepData[5].subQuestion }}
                 </p>
 
                 <div class="form__field">
@@ -528,26 +534,6 @@
               </div>
 
               <!-- Form Step #6 -->
-              <div key="7" v-if="formStep === 7">
-                <div class="thank-you">
-                  <p>Hi {{ formStepData[5].firstName }},</p>
-                  <p>Thank you for contacting Thompson Creek!</p>
-                  <p>
-                    A Window Replacement Specialist will call you to schedule
-                    your appointment.
-                  </p>
-                  <p>
-                    Take advantage of buy one get one 40% off during your
-                    written price estimate.
-                  </p>
-                  <p>In the meantime, download your Free Brochure.</p>
-                  <a class="download-brochure" href="/download/"
-                    >Download Brochure</a
-                  >
-                </div>
-              </div>
-
-              <!-- Form Step #6 -->
               <div
                 key="6"
                 v-if="formStep === 6"
@@ -555,6 +541,158 @@
               >
                 <p class="form__question">
                   {{ formStepData[6].question }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Gas"
+                        name="waterheater-kind"
+                        type="radio"
+                        class="input-radio__item"
+                        id="gas-waterheater"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="gas-waterheater"
+                        >Gas</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Electric"
+                        name="waterheater-kind"
+                        type="radio"
+                        class="input-radio__item"
+                        id="electric-waterheater"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="electric-waterheater"
+                        >Electric</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Center"
+                        name="waterheater-kind"
+                        type="radio"
+                        class="input-radio__item"
+                        id="dont-know-waterheater"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="dont-know-waterheater"
+                        >I don't know</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Step #7 -->
+              <div key="7" v-if="formStep === 7" class="form__section">
+                <p class="form__question">
+                  {{ formStepData[7].question }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[7].gallonNumber"
+                        @keyup="resetError"
+                        :class="{ error: showError }"
+                        class="form__input-text"
+                        type="text"
+                        placeholder="Enter # of Gallons"
+                        v-mask="'###'"
+                      />
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[7].gallonDontKnow"
+                        value="I don't know"
+                        name="waterheater-capacity"
+                        type="checkbox"
+                        class="input-radio__item"
+                        id="dont-know-waterheater-capacity"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="dont-know-waterheater-capacity"
+                        >I don't know</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                  :class="{ 'form-step__button--float': formStep === 0}"
+                >
+                  {{ buttonText }}
+                  <i
+                    v-show="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
+                </button>
+              </div>
+
+              <!-- Form Step #13 -->
+              <div key="13" v-if="formStep === 13" class="form__section">
+                <p class="form__question">
+                  {{ formStepData[13].question }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[5].firstName"
+                        @keyup="resetError"
+                        :class="{ error: showError }"
+                        class="form__input-text first-name"
+                        type="text"
+                        placeholder="First Name"
+                      />
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[5].lastName"
+                        @keyup="resetError"
+                        :class="{ error: showError }"
+                        class="form__input-text last-name"
+                        type="text"
+                        placeholder="Last Name"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Step #14 -->
+              <div
+                key="14"
+                v-if="formStep === 14"
+                class="form__section form-step--6"
+              >
+                <p class="form__question">
+                  {{ formStepData[14].question }}
                 </p>
 
                 <div class="form__field">
@@ -588,7 +726,28 @@
                   </div>
                 </div>
               </div>
+
+              <!-- Form Step #15 -->
+              <div key="15" v-if="formStep === 15">
+                <div class="thank-you">
+                  <p>Hi {{ formStepData[5].firstName }},</p>
+                  <p>Thank you for contacting Thompson Creek!</p>
+                  <p>
+                    A Window Replacement Specialist will call you to schedule
+                    your appointment.
+                  </p>
+                  <p>
+                    Take advantage of buy one get one 40% off during your
+                    written price estimate.
+                  </p>
+                  <p>In the meantime, download your Free Brochure.</p>
+                  <a class="download-brochure" href="/download/"
+                    >Download Brochure</a
+                  >
+                </div>
+              </div>
             </transition>
+
             <transition name="fade-confirmation">
               <p v-show="showConfirmation" class="confirmation">
                 By completing the form, you’re giving us permission to call,
@@ -695,6 +854,11 @@
           <a class="footer__link" href="./privacy-policy.html"
             >Privacy Policy</a
           >
+          <img
+            src="./assets/media/full-checkbox.png"
+            alt="Full checkbox"
+            style="display: none;"
+          />
         </p>
       </div>
     </section>

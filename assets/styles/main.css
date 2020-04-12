@@ -204,6 +204,11 @@ body {
   }
 }
 
+.u-h-padding-none {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 /********** Header **********/
 .main-header {
   display: -webkit-box;
@@ -490,6 +495,29 @@ body {
     font-weight: 300;
     margin-bottom: 3rem;
     text-shadow: none;
+    padding: 0 6rem;
+  }
+}
+
+/* Form subquestion */
+.form__sub-question {
+  font-size: 2.2rem;
+  max-width: 400px;
+  color: #ffffff;
+  text-shadow: 1px 1px 1px #555;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 1300px) {
+  .form__sub-question {
+    max-width: 100%;
+    font-size: 2.4rem;
+    font-weight: 300;
+    margin-top: -3rem;
+    text-shadow: none;
+    padding: 0 6rem;
   }
 }
 
@@ -579,10 +607,22 @@ body {
     font-size: 2rem;
     padding: 10px;
     width: 100%;
-    width: 535px;
-    max-width: 535px;
     border: hidden;
   }
+}
+
+/* Placeholder */
+::-webkit-input-placeholder {
+  color: #3e3e3f;
+}
+:-ms-input-placeholder {
+  color: #3e3e3f;
+}
+::-ms-input-placeholder {
+  color: #3e3e3f;
+}
+::placeholder {
+  color: #3e3e3f;
 }
 
 /* Specific fields */
@@ -1028,12 +1068,14 @@ body {
   padding-left: 0;
   font-size: 1.8rem;
   color: #ffffff;
+  text-shadow: 1px 1px 1px #555;
   cursor: pointer;
 }
 
 @media (min-width: 1300px) {
   .input-checkbox__label {
     font-size: 2rem;
+    text-shadow: none;
   }
 }
 

@@ -39,11 +39,13 @@
   padding-left: 0;
   font-size: 1.8rem;
   color: $color-white;
+  text-shadow: 1px 1px 1px #555;
   cursor: pointer;
 }
 @media (min-width: 1300px) {
   .input-checkbox__label {
     font-size: 2rem;
+    text-shadow: none;
   }
 }
 
