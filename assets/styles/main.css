@@ -1105,7 +1105,8 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   background: url("../media/background-mobile.png") fixed;
-  background-size: cover;
+  background-size: 150%;
+  background-position-x: 50%, center;
 }
 
 @media (min-width: 1300px) {
