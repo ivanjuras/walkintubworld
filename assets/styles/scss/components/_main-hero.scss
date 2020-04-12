@@ -7,9 +7,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: url("../media/background-mobile.png") fixed;
-  background-size: 150%;
-  background-position-x: 50%, center;
+  background: url("../media/background-mobile.png") center fixed no-repeat;
+  background-size: cover;
 }
 
 @media (min-width: 1300px) {
