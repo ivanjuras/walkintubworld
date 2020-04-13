@@ -1,3 +1,4 @@
+Vue.config.devtools = true
 Vue.use(VueMask.VueMaskPlugin)
 
 var vm = new Vue({
@@ -88,7 +89,7 @@ var vm = new Vue({
 
         // Step 9
         {
-          question: "Do you need a bariatric model?",
+          question: "Do you need a bariatric model in your home?",
           subQuestion: "(designed for buyers over 300 lbs)",
           value: "",
           pattern: /[a-z0-9]/,
@@ -116,9 +117,18 @@ var vm = new Vue({
         {
           question: "Time to post 3 photos!",
           subQuestion: "(wide angle shots please)",
-          bathtubPhotoURL: "",
-          bathroomDoorFramePhotoURL: "",
-          waterHeaterPhotoURL: "",
+          bathtubShowerPhoto: {
+            url: "./assets/media/empty-photo-image.png",
+            retakeVisible: false,
+          },
+          bathroomDoorFramePhoto: {
+            url: "./assets/media/empty-photo-image.png",
+            retakeVisible: false,
+          },
+          waterHeaterPhoto: {
+            url: "./assets/media/empty-photo-image.png",
+            retakeVisible: false,
+          },
         },
 
         // ----- Step 13
@@ -126,6 +136,7 @@ var vm = new Vue({
           question: "Almost done!",
           firstName: "",
           lastName: "",
+          streetAddress: "",
           pattern: /[a-z0-9]/,
         },
 
@@ -240,16 +251,65 @@ var vm = new Vue({
     },
 
     fireStep7: function () {
-      console.log(this.formStepData[7].gallonNumber)
-      console.log(this.formStepData[7].gallonUnknown)
+      if (
+        this.formStepData[this.formStep].patternGallonNumber.test(
+          this.formStepData[this.formStep].gallonNumber
+        ) ||
+        this.formStepData[this.formStep].patternGallonDontKnow.test(
+          this.formStepData[this.formStep].gallonDontKnow
+        )
+      ) {
+        if (this.formStepData[7].gallonDontKnow) {
+          this.formStepData[7].gallonDontKnow = "I don't know"
+        }
+
+        console.log(this.formStepData[this.formStep].gallonNumber)
+        console.log(this.formStepData[7].gallonDontKnow)
+
+        this.showError = false
+        this.formStep++
+      } else {
+        this.showError = true
+      }
     },
 
     fireStep10: function () {
-      this.standardStepFire()
+      if (
+        this.formStepData[this.formStep].patternMeasures.test(
+          this.formStepData[this.formStep].bathroomDoorFrameWidth
+        ) &&
+        this.formStepData[this.formStep].patternMeasures.test(
+          this.formStepData[this.formStep].bathtubShowerLength
+        ) &&
+        this.formStepData[this.formStep].patternMeasures.test(
+          this.formStepData[this.formStep].bathtubShowerWidth
+        )
+      ) {
+        console.log(this.formStepData[10].bathroomDoorFrameWidth)
+        console.log(this.formStepData[10].bathtubShowerLength)
+        console.log(this.formStepData[10].bathtubShowerWidth)
+
+        this.showError = false
+        this.formStep++
+      } else {
+        this.showError = true
+      }
     },
 
     fireStep12: function () {
-      this.standardStepFire()
+      console.log(this.formStepData[12].bathtubShowerPhoto.url)
+      console.log(this.formStepData[12].bathroomDoorFramePhoto.url)
+      console.log(this.formStepData[12].waterHeaterPhoto.url)
+      if (
+        this.formStepData[12].bathtubShowerPhoto.url.includes("appspot") &&
+        this.formStepData[12].bathroomDoorFramePhoto.url.includes("appspot") &&
+        this.formStepData[12].waterHeaterPhoto.url.includes("appspot")
+      ) {
+        this.formStep++
+        this.showError = false
+      } else {
+        this.showError()
+      }
     },
 
     fireStep13: function () {
@@ -259,16 +319,25 @@ var vm = new Vue({
         ) &&
         this.formStepData[this.formStep].pattern.test(
           this.formStepData[this.formStep].lastName
+        ) &&
+        this.formStepData[this.formStep].pattern.test(
+          this.formStepData[this.formStep].streetAddress
         )
       ) {
+        console.log("All is good")
         this.formStep++
         this.showError = false
+        this.buttonText = "Get Quote"
+        this.showArrow = false
       } else {
         this.showError = true
       }
     },
 
     fireStep14: function () {
+      console.log(this.formStepData[this.formStep].phoneNumber)
+      console.log(this.formStepData[this.formStep].emailAddress)
+
       if (
         this.formStepData[this.formStep].patternPhone.test(
           this.formStepData[this.formStep].phoneNumber
@@ -291,20 +360,17 @@ var vm = new Vue({
           financing: this.formStepData[3].value,
         }
 
-        axios({
-          method: "post",
-          url: this.endPointURL,
-          data: this.finalObject,
-        })
-          .then(function (response) {
-            console.log(response)
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
-
-        this.formStep++
-        this.showError = false
+        // axios({
+        //   method: "post",
+        //   url: this.endPointURL,
+        //   data: this.finalObject,
+        // })
+        //   .then(function (response) {
+        //     console.log(response)
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error)
+        //   })
       } else {
         this.showError = true
       }
@@ -340,6 +406,124 @@ var vm = new Vue({
 
       this.formStepData[5].featuresText = this.formStepData[5].features.join(
         ", "
+      )
+    },
+
+    bathtubShowerTakePhoto: function (event) {
+      var bathTubShowerInputFile = document.getElementById(
+        "bathtub-shower-take"
+      )
+
+      bathTubShowerInputFile.click()
+
+      bathTubShowerInputFile.addEventListener(
+        "change",
+        function () {
+          var image = this.files[0]
+          var imageName = image.name
+
+          var imageStorageRef = firebase.storage().ref("images/" + imageName)
+          var uploadImageTask = imageStorageRef.put(image)
+
+          uploadImageTask.on(
+            "state_changed",
+            function (snapshot) {
+              var progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              console.log("Upload is " + progress + " complete")
+            },
+            function (error) {
+              console.log(error)
+            },
+            function () {
+              uploadImageTask.snapshot.ref
+                .getDownloadURL()
+                .then(function (downloadURL) {
+                  vm.formStepData[12].bathtubShowerPhoto.url = downloadURL
+                  vm.formStepData[12].bathtubShowerPhoto.retakeVisible = true
+                })
+            }
+          )
+        },
+        false
+      )
+    },
+
+    bathroomDoorFrameTakePhoto: function (event) {
+      var bathroomDoorFrameInputFile = document.getElementById(
+        "bathroom-door-frame-take"
+      )
+
+      bathroomDoorFrameInputFile.click()
+
+      bathroomDoorFrameInputFile.addEventListener(
+        "change",
+        function () {
+          var image = this.files[0]
+          var imageName = image.name
+
+          var imageStorageRef = firebase.storage().ref("images/" + imageName)
+          var uploadImageTask = imageStorageRef.put(image)
+
+          uploadImageTask.on(
+            "state_changed",
+            function (snapshot) {
+              var progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              console.log("Upload is " + progress + " complete")
+            },
+            function (error) {
+              console.log(error)
+            },
+            function () {
+              uploadImageTask.snapshot.ref
+                .getDownloadURL()
+                .then(function (downloadURL) {
+                  vm.formStepData[12].bathroomDoorFramePhoto.url = downloadURL
+                  vm.formStepData[12].bathroomDoorFramePhoto.retakeVisible = true
+                })
+            }
+          )
+        },
+        false
+      )
+    },
+
+    waterHeaterTakePhoto: function (event) {
+      var waterHeaterInputFile = document.getElementById("water-heater-photo")
+
+      waterHeaterInputFile.click()
+
+      waterHeaterInputFile.addEventListener(
+        "change",
+        function () {
+          var image = this.files[0]
+          var imageName = image.name
+
+          var imageStorageRef = firebase.storage().ref("images/" + imageName)
+          var uploadImageTask = imageStorageRef.put(image)
+
+          uploadImageTask.on(
+            "state_changed",
+            function (snapshot) {
+              var progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              console.log("Upload is " + progress + " complete")
+            },
+            function (error) {
+              console.log(error)
+            },
+            function () {
+              uploadImageTask.snapshot.ref
+                .getDownloadURL()
+                .then(function (downloadURL) {
+                  vm.formStepData[12].waterHeaterPhoto.url = downloadURL
+                  vm.formStepData[12].waterHeaterPhoto.retakeVisible = true
+                })
+            }
+          )
+        },
+        false
       )
     },
 

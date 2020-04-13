@@ -178,7 +178,9 @@
                 v-if="formStep === 2"
                 class="form__section form-step--2"
               >
-                <p class="form__question" v-html="formStepData[2].question"></p>
+                <p class="form__question">
+                  {{ formStepData[2].question }}
+                </p>
 
                 <div class="form__field">
                   <div class="input-radios">
@@ -259,10 +261,7 @@
                 v-if="formStep === 3"
                 class="form__section form-step--3"
               >
-                <p
-                  class="form__question u-h-padding-none"
-                  v-html="formStepData[3].question"
-                >
+                <p class="form__question u-h-padding-none">
                   {{ formStepData[3].question }}
                 </p>
 
@@ -582,7 +581,7 @@
                     <div class="input-radio__block">
                       <input
                         @change="onSelectRadio"
-                        value="Center"
+                        value="I don't know"
                         name="waterheater-kind"
                         type="radio"
                         class="input-radio__item"
@@ -600,7 +599,11 @@
               </div>
 
               <!-- Form Step #7 -->
-              <div key="7" v-if="formStep === 7" class="form__section">
+              <div
+                key="7"
+                v-if="formStep === 7"
+                class="form__section form-step--7"
+              >
                 <p class="form__question">
                   {{ formStepData[7].question }}
                 </p>
@@ -652,6 +655,404 @@
                 </button>
               </div>
 
+              <!-- Form Step #8 -->
+              <div
+                key="8"
+                v-if="formStep === 8"
+                class="form__section form-step--8"
+              >
+                <p class="form__question">
+                  {{ formStepData[8].question }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Yes"
+                        name="use-wheelchair"
+                        type="radio"
+                        class="input-radio__item"
+                        id="wheelchair-yes"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="wheelchair-yes"
+                        >Yes</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="No"
+                        name="use-wheelchair"
+                        type="radio"
+                        class="input-radio__item"
+                        id="wheelchair-no"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="wheelchair-no"
+                        >No</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Center"
+                        name="waterheater-kind"
+                        type="radio"
+                        class="input-radio__item"
+                        id="dont-know-waterheater"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="dont-know-waterheater"
+                        >I don't know</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Step #9 -->
+              <div
+                key="9"
+                v-if="formStep === 9"
+                class="form__section form-step--9"
+              >
+                <p class="form__question">
+                  {{ formStepData[9].question }}
+                </p>
+                <p class="form__sub-question">
+                  {{ formStepData[9].subQuestion }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Yes"
+                        name="need-bariatric-model"
+                        type="radio"
+                        class="input-radio__item"
+                        id="bariatric-yes"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="bariatric-yes"
+                        >Yes</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="No"
+                        name="need-bariatric-model"
+                        type="radio"
+                        class="input-radio__item"
+                        id="bariatric-no"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="bariatric-no"
+                        >No</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Center"
+                        name="waterheater-kind"
+                        type="radio"
+                        class="input-radio__item"
+                        id="dont-know-waterheater"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="dont-know-waterheater"
+                        >I don't know</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Step #10 -->
+              <div
+                key="10"
+                v-if="formStep === 10"
+                class="form__section form-step--10"
+              >
+                <p class="form__question">
+                  {{ formStepData[10].question }}
+                </p>
+                <p class="form__sub-question">
+                  {{ formStepData[10].subQuestion }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[10].bathroomDoorFrameWidth"
+                        @keyup="resetError"
+                        :class="{ error: showError}"
+                        class="form__input-text u-fs-md"
+                        type="text"
+                        placeholder="Width of bathroom door frame"
+                        v-mask="'###'"
+                      />
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[10].bathtubShowerLength"
+                        @keyup="resetError"
+                        :class="{ error: showError} "
+                        class="form__input-text u-fs-md"
+                        type="text"
+                        placeholder="Length of bathtub/shower"
+                        v-mask="'###'"
+                      />
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[10].bathtubShowerWidth"
+                        @keyup="resetError"
+                        :class="{ error: showError }"
+                        class="form__input-text u-fs-md"
+                        type="text"
+                        placeholder="Width of bathtub/shower"
+                        v-mask="'###'"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                  :class="{ 'form-step__button--float': formStep === 0}"
+                >
+                  {{ buttonText }}
+                  <i
+                    v-show="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
+                </button>
+              </div>
+
+              <!-- Form Step #11 -->
+              <div
+                key="11"
+                v-if="formStep === 11"
+                class="form__section form-step--11"
+              >
+                <p class="form__question">
+                  {{ formStepData[11].question }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Cash or Check"
+                        name="payment-method"
+                        type="radio"
+                        class="input-radio__item"
+                        id="cash-or-check"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="cash-or-check"
+                        >Cash or Check</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Credit card"
+                        name="payment-method"
+                        type="radio"
+                        class="input-radio__item"
+                        id="credit-card"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="credit-card"
+                        >Credit card</label
+                      >
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        @change="onSelectRadio"
+                        value="Financed monthly payments"
+                        name="payment-method"
+                        type="radio"
+                        class="input-radio__item"
+                        id="financed-monthly-payments"
+                      />
+                      <label
+                        :class="{ error: showError }"
+                        class="input-radio__label"
+                        for="financed-monthly-payments"
+                        >Financed monthly payments</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Step #12 -->
+              <div
+                key="12"
+                v-if="formStep === 12"
+                class="form__section form-step--12"
+              >
+                <p class="form__question">
+                  {{ formStepData[12].question }}
+                </p>
+                <p class="form__sub-question">
+                  {{ formStepData[12].subQuestion }}
+                </p>
+
+                <div class="form__field">
+                  <div class="add-photos">
+                    <div class="add-photo" :class="{ error: showError }">
+                      <div class="add-photo__photo-box">
+                        <div class="add-photo__photo">
+                          <input
+                            id="bathtub-shower-take"
+                            type="file"
+                            accept="image/*"
+                            hidden
+                          />
+                          <img
+                            @click="bathtubShowerTakePhoto"
+                            :src="formStepData[12].bathtubShowerPhoto.url"
+                            id="add-photo__bathtub-shower"
+                            alt=""
+                            width="75"
+                            height="50"
+                          />
+                        </div>
+
+                        <div class="add-photo__retake">
+                          <span
+                            v-if="formStepData[12].bathtubShowerPhoto.retakeVisible"
+                            @click="bathtubShowerTakePhoto"
+                            >retake</span
+                          >
+                        </div>
+                      </div>
+
+                      <span class="add-photo__text">
+                        of bathtub/shower
+                      </span>
+                    </div>
+
+                    <div class="add-photo" :class="{ error: showError }">
+                      <div class="add-photo__photo-box">
+                        <div class="add-photo__photo">
+                          <input
+                            id="bathroom-door-frame-take"
+                            type="file"
+                            accept="image/*"
+                            hidden
+                          />
+                          <img
+                            @click="bathroomDoorFrameTakePhoto"
+                            :src="formStepData[12].bathroomDoorFramePhoto.url"
+                            id="add-photo__bathroom-door-frame"
+                            alt=""
+                            width="75"
+                            height="50"
+                          />
+                        </div>
+
+                        <div class="add-photo__retake">
+                          <span
+                            v-if="formStepData[12].bathroomDoorFramePhoto.retakeVisible"
+                            @click="bathroomDoorFrameTakePhoto"
+                            >retake</span
+                          >
+                        </div>
+                      </div>
+
+                      <span class="add-photo__text">
+                        of bathroom door frame
+                      </span>
+                    </div>
+
+                    <div class="add-photo" :class="{ error: showError }">
+                      <div class="add-photo__photo-box">
+                        <div class="add-photo__photo">
+                          <input
+                            id="water-heater-photo"
+                            type="file"
+                            accept="image/*"
+                            hidden
+                          />
+                          <img
+                            @click="waterHeaterTakePhoto"
+                            :src="formStepData[12].waterHeaterPhoto.url"
+                            id="add-photo__water-heater"
+                            alt=""
+                            width="75"
+                            height="50"
+                          />
+                        </div>
+
+                        <div class="add-photo__retake">
+                          <span
+                            v-if="formStepData[12].waterHeaterPhoto.retakeVisible"
+                            @click="waterHeaterTakePhoto"
+                            >retake</span
+                          >
+                        </div>
+                      </div>
+
+                      <span class="add-photo__text">
+                        of water heater
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                  :class="{ 'form-step__button--float': formStep === 0}"
+                >
+                  {{ buttonText }}
+                  <i
+                    v-show="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
+                </button>
+              </div>
+
               <!-- Form Step #13 -->
               <div key="13" v-if="formStep === 13" class="form__section">
                 <p class="form__question">
@@ -662,7 +1063,7 @@
                   <div class="input-radios input-radios--column">
                     <div class="input-radio__block">
                       <input
-                        v-model="formStepData[5].firstName"
+                        v-model="formStepData[13].firstName"
                         @keyup="resetError"
                         :class="{ error: showError }"
                         class="form__input-text first-name"
@@ -673,7 +1074,7 @@
 
                     <div class="input-radio__block">
                       <input
-                        v-model="formStepData[5].lastName"
+                        v-model="formStepData[13].lastName"
                         @keyup="resetError"
                         :class="{ error: showError }"
                         class="form__input-text last-name"
@@ -681,8 +1082,47 @@
                         placeholder="Last Name"
                       />
                     </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[13].streetAddress"
+                        @keyup="resetError"
+                        :class="{ error: showError }"
+                        class="form__input-text last-name"
+                        type="text"
+                        placeholder="Street address"
+                      />
+                    </div>
+
+                    <div class="floating-address">
+                      <img
+                        src="./assets/media/icon-marker-small.png"
+                        alt="Small marker"
+                        style="margin-right: 1rem"
+                      />
+                      <span class="floatingAddress__city">{{ city }},&nbsp;</span>
+                      <span class="floatingAddress__state"
+                        >{{ stateAbbreviation }}
+                      </span>
+                      <span class="floatingAddress__state"></span>
+                        &nbsp; {{ stateZipCode }}
+                      </span>
+                    </div>
                   </div>
                 </div>
+
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                  :class="{ 'form-step__button--float': formStep === 0}"
+                >
+                  {{ buttonText }}
+                  <i
+                    v-show="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
+                </button>
               </div>
 
               <!-- Form Step #14 -->
@@ -700,7 +1140,7 @@
                     <div class="input-radio__block">
                       <span class="form__input-text--phone">
                         <input
-                          v-model="formStepData[6].phoneNumber"
+                          v-model="formStepData[14].phoneNumber"
                           @keyup="resetError"
                           :class="{ error: showError }"
                           v-mask="'(###) ###-####'"
@@ -714,7 +1154,7 @@
                     <div class="input-radio__block">
                       <span class="form__input-text--email">
                         <input
-                          v-model="formStepData[6].emailAddress"
+                          v-model="formStepData[14].emailAddress"
                           @keyup="resetError"
                           :class="{ error: showError }"
                           class="form__input-text email-address"
@@ -725,26 +1165,19 @@
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- Form Step #15 -->
-              <div key="15" v-if="formStep === 15">
-                <div class="thank-you">
-                  <p>Hi {{ formStepData[5].firstName }},</p>
-                  <p>Thank you for contacting Thompson Creek!</p>
-                  <p>
-                    A Window Replacement Specialist will call you to schedule
-                    your appointment.
-                  </p>
-                  <p>
-                    Take advantage of buy one get one 40% off during your
-                    written price estimate.
-                  </p>
-                  <p>In the meantime, download your Free Brochure.</p>
-                  <a class="download-brochure" href="/download/"
-                    >Download Brochure</a
-                  >
-                </div>
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                  :class="{ 'form-step__button--float': formStep === 0}"
+                >
+                  {{ buttonText }}
+                  <i
+                    v-if="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
+                </button>
               </div>
             </transition>
 
@@ -863,6 +1296,28 @@
       </div>
     </section>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCcjNFM4M0vW8PqqtiwhcxDwZzifI5-ULk",
+        authDomain: "walkin-tubworld.firebaseapp.com",
+        databaseURL: "https://walkin-tubworld.firebaseio.com",
+        projectId: "walkin-tubworld",
+        storageBucket: "walkin-tubworld.appspot.com",
+        messagingSenderId: "316091485536",
+        appId: "1:316091485536:web:96e81720c35a93992c2205",
+      }
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig)
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>

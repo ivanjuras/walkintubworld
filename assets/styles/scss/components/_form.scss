@@ -55,7 +55,7 @@
 /* Form subquestion */
 
 .form__sub-question {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   max-width: 400px;
   color: #ffffff;
   text-shadow: 1px 1px 1px #555;
@@ -209,13 +209,6 @@
   position: relative;
 }
 
-.email-address {
-  position: relative;
-  max-width: 100%;
-  margin-bottom: 1.5rem;
-  padding-right: 50px;
-}
-
 /********** Button **********/
 .form-step__button {
   position: relative;
@@ -316,7 +309,6 @@
   box-shadow: 0 0 0 5px #f3403d;
   -webkit-box-shadow: 0 0 0 5px #f3403d;
   -webkit-appearance: none;
-  color: f3403d !important;
 }
 
 .error-message {

@@ -57,6 +57,9 @@
 .input-radio__item:checked + .input-radio__label {
   background: #b9d5f9;
 }
+.input-radio__item:not(:checked) + .input-radio__label {
+  background: #ffffff;
+}
 
 .input-radio__label {
   background: #ffffff;
