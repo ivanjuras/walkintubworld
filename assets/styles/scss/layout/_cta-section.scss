@@ -1,10 +1,12 @@
 /********** CTA Section **********/
 
 .cta-section {
-  max-width: 52rem;
+  max-width: 100%;
+  width: 100%;
 }
-@media (min-width: 1300px) {
+@media (min-width: 1024px) {
   .cta-section {
     width: 52rem;
+    max-width: 52rem;
   }
 }

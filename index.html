@@ -1178,15 +1178,10 @@
                     class="form-step__arrow fas fa-long-arrow-alt-right"
                   ></i>
                 </button>
+                <p v-show="showConfirmation" class="confirmation">
+                  By clicking the Get Quote button you agree to authorize Walk-In Tub World and it's partners to call, email and text message you on the phone number you provided, using automated technology. Your consent does not require purchase.
+                </p>
               </div>
-            </transition>
-
-            <transition name="fade-confirmation">
-              <p v-show="showConfirmation" class="confirmation">
-                By completing the form, you’re giving us permission to call,
-                email, or text you with information on our products and services
-                using the information you provide.
-              </p>
             </transition>
           </form>
         </div>

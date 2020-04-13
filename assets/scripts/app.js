@@ -76,7 +76,8 @@ var vm = new Vue({
           question: "What is the gallon capacity of your water heater?",
           gallonNumber: "",
           gallonDontKnow: "",
-          patternGallonNumber: /[0-9]{3}/,
+          gallonFinalAnswer: "",
+          patternGallonNumber: /[0-9]{2,3}/,
           patternGallonDontKnow: /[a-z0-9]/,
         },
 
@@ -102,7 +103,7 @@ var vm = new Vue({
           bathroomDoorFrameWidth: "",
           bathtubShowerLength: "",
           bathtubShowerWidth: "",
-          patternMeasures: /[0-9]{3}/,
+          patternMeasures: /[0-9]{2,3}/,
         },
 
         // Step 11
@@ -259,8 +260,15 @@ var vm = new Vue({
           this.formStepData[this.formStep].gallonDontKnow
         )
       ) {
-        if (this.formStepData[7].gallonDontKnow) {
-          this.formStepData[7].gallonDontKnow = "I don't know"
+        if (this.formStepData[this.formStep].gallonNumber) {
+          this.formStepData[
+            this.formStep
+          ].gallonFinalAnswer = this.formStepData[this.formStep].gallonNumber
+        } else {
+          this.formStepData[this.formStep].gallonDontKnow = "I don't know"
+          this.formStepData[
+            this.formStep
+          ].gallonFinalAnswer = this.formStepData[this.formStep].gallonDontKnow
         }
 
         console.log(this.formStepData[this.formStep].gallonNumber)
@@ -285,9 +293,9 @@ var vm = new Vue({
           this.formStepData[this.formStep].bathtubShowerWidth
         )
       ) {
-        console.log(this.formStepData[10].bathroomDoorFrameWidth)
-        console.log(this.formStepData[10].bathtubShowerLength)
-        console.log(this.formStepData[10].bathtubShowerWidth)
+        console.log(this.formStepData[this.formStep].bathroomDoorFrameWidth)
+        console.log(this.formStepData[this.formStep].bathtubShowerLength)
+        console.log(this.formStepData[this.formStep].bathtubShowerWidth)
 
         this.showError = false
         this.formStep++
@@ -308,7 +316,7 @@ var vm = new Vue({
         this.formStep++
         this.showError = false
       } else {
-        this.showError()
+        this.showError = true
       }
     },
 
@@ -329,15 +337,13 @@ var vm = new Vue({
         this.showError = false
         this.buttonText = "Get Quote"
         this.showArrow = false
+        this.showConfirmation = true
       } else {
         this.showError = true
       }
     },
 
     fireStep14: function () {
-      console.log(this.formStepData[this.formStep].phoneNumber)
-      console.log(this.formStepData[this.formStep].emailAddress)
-
       if (
         this.formStepData[this.formStep].patternPhone.test(
           this.formStepData[this.formStep].phoneNumber
@@ -346,19 +352,36 @@ var vm = new Vue({
           this.formStepData[this.formStep].emailAddress
         )
       ) {
+        console.log("Weve made it")
         this.finalObject = {
-          firstName: this.formStepData[5].firstName,
-          lastName: this.formStepData[5].lastName,
-          phoneNumber: this.formStepData[6].phoneNumber,
-          emailAddress: this.formStepData[6].emailAddress,
-          projectAddress: this.formStepData[4].value,
-          city: this.city,
           zipCode: this.stateZipCode,
-          state: this.stateAbbreviation,
-          numWindowsInstalled: this.formStepData[1].value,
-          howSoon: this.formStepData[2].value,
-          financing: this.formStepData[3].value,
+          propertyOwned: this.formStepData[1].value,
+          bathroomLocation: this.formStepData[2].value,
+          doorsRequired: this.formStepData[3].value,
+          faucetsLocation: this.formStepData[4].value,
+          features: this.formStepData[5].featuresText,
+          waterHeaterType: this.formStepData[6].value,
+          gallonCapacity: this.formStepData[7].gallonFinalAnswer,
+          wheelChairUse: this.formStepData[8].value,
+          bariatricModelNeeded: this.formStepData[9].value,
+          bathroomDoorFrameWidth: this.formStepData[10].bathroomDoorFrameWidth,
+          bathtubShowerLength: this.formStepData[10].bathtubShowerLength,
+          bathtubShowerWidth: this.formStepData[10].bathtubShowerWidth,
+          paymentMethod: this.formStepData[11].value,
+          bathtubShowerPhoto: this.formStepData[12].bathtubShowerPhoto.url,
+          bathroomDoorFramePhoto: this.formStepData[12].bathroomDoorFramePhoto
+            .url,
+          waterHeaterPhoto: this.formStepData[12].bathroomDoorFramePhoto.url,
+          firstName: this.formStepData[13].firstName,
+          lastName: this.formStepData[13].lastName,
+          streetAddress: this.formStepData[13].streetAddress,
+          phoneNumber: this.formStepData[14].phoneNumber,
+          emailAddress: this.formStepData[14].emailAddress,
         }
+
+        console.log(this.finalObject)
+
+        sessionStorage.setItem("finalObject", JSON.stringify(this.finalObject))
 
         // axios({
         //   method: "post",
