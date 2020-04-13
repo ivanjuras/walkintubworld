@@ -382,6 +382,7 @@ var vm = new Vue({
         console.log(this.finalObject)
 
         sessionStorage.setItem("finalObject", JSON.stringify(this.finalObject))
+        window.location.href = "thankyou"
 
         // axios({
         //   method: "post",

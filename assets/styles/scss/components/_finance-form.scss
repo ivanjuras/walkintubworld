@@ -1,0 +1,51 @@
+/************* Finance form **************/
+
+.applicant-information {
+  width: 100%;
+}
+@media (min-width: 1300px) {
+  .applicant-information {
+    width: 50%;
+  }
+}
+
+.co-applicant-information {
+  width: 100%;
+}
+@media (min-width: 1300px) {
+  .co-applicant-information {
+    width: 50%;
+  }
+}
+
+.finance-form__heading {
+  font-weight: 300;
+  text-decoration: underline;
+  text-align: center;
+  margin-bottom: 3.4rem;
+}
+@media (min-width: 1300px) {
+  .finance-form__heading {
+    font-size: 2.2rem;
+  }
+}
+
+.finance-form__input {
+  display: block;
+  margin: 0 auto 3rem auto;
+  border: 1px solid #777777;
+  font-weight: 300;
+  color: #3f3f3f;
+  text-align: center;
+  border-radius: 5px;
+  padding: 1rem;
+  outline: none;
+  width: 100%;
+  max-width: 100%;
+}
+@media (min-width: 1300px) {
+  .finance-form__input {
+    width: 300px;
+    font-size: 2rem;
+  }
+}

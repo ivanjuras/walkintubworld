@@ -47,6 +47,7 @@
 
 .text-section__button--big {
   width: 340px;
+  max-width: 100%;
   text-align: center;
 }
 @media (min-width: 1300px) {
@@ -57,6 +58,7 @@
 }
 
 .text-section__button--x-big {
+  max-width: 100%;
   width: 400px;
   text-align: center;
 }
