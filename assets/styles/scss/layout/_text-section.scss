@@ -82,3 +82,13 @@
     align-items: center;
   }
 }
+
+.text-section__agree {
+  line-height: 1.2 !important;
+  font-size: 1.4rem !important;
+}
+@media (min-width: 1300px) {
+  .text-section__agree {
+    font-size: 1.8rem !important;
+  }
+}

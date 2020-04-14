@@ -7,7 +7,7 @@ var vm = new Vue({
   data: function () {
     return {
       endPointURL:
-        "https://hook.integromat.com/2fhtb23qdi1cci7qq6p5kxd24u1215d3", // Change your endpoint URL here
+        "https://hook.integromat.com/81eb1lajvi88gb2fymruu7eu435wetrm", // Change your endpoint URL here
       buttonText: "Next",
       showButton: true,
       formStep: 0,
@@ -155,8 +155,6 @@ var vm = new Vue({
 
   methods: {
     increaseFormStep: function () {
-      console.log(this.formStep)
-
       switch (this.formStep) {
         case 0:
           this.fireStep0()
@@ -213,7 +211,6 @@ var vm = new Vue({
               "&key=AIzaSyB-tH8jD9dvfm8RaijJmjKt2K5XuEJkUcA"
           )
           .then(function (response) {
-            console.log(response.data)
             var responseArray = response.data.results[0].address_components
             responseArray.map(function (item) {
               var types = item.types
@@ -235,7 +232,6 @@ var vm = new Vue({
           })
           .catch(function (error) {
             vm.showError = true
-            console.log(error)
           })
       } else {
         this.showError = true
@@ -271,9 +267,6 @@ var vm = new Vue({
           ].gallonFinalAnswer = this.formStepData[this.formStep].gallonDontKnow
         }
 
-        console.log(this.formStepData[this.formStep].gallonNumber)
-        console.log(this.formStepData[7].gallonDontKnow)
-
         this.showError = false
         this.formStep++
       } else {
@@ -293,10 +286,6 @@ var vm = new Vue({
           this.formStepData[this.formStep].bathtubShowerWidth
         )
       ) {
-        console.log(this.formStepData[this.formStep].bathroomDoorFrameWidth)
-        console.log(this.formStepData[this.formStep].bathtubShowerLength)
-        console.log(this.formStepData[this.formStep].bathtubShowerWidth)
-
         this.showError = false
         this.formStep++
       } else {
@@ -305,9 +294,6 @@ var vm = new Vue({
     },
 
     fireStep12: function () {
-      console.log(this.formStepData[12].bathtubShowerPhoto.url)
-      console.log(this.formStepData[12].bathroomDoorFramePhoto.url)
-      console.log(this.formStepData[12].waterHeaterPhoto.url)
       if (
         this.formStepData[12].bathtubShowerPhoto.url.includes("appspot") &&
         this.formStepData[12].bathroomDoorFramePhoto.url.includes("appspot") &&
@@ -332,7 +318,8 @@ var vm = new Vue({
           this.formStepData[this.formStep].streetAddress
         )
       ) {
-        console.log("All is good")
+        console.log(this.formStepData[this.formStep].streetAddress)
+
         this.formStep++
         this.showError = false
         this.buttonText = "Get Quote"
@@ -352,7 +339,6 @@ var vm = new Vue({
           this.formStepData[this.formStep].emailAddress
         )
       ) {
-        console.log("Weve made it")
         this.finalObject = {
           zipCode: this.stateZipCode,
           propertyOwned: this.formStepData[1].value,
@@ -375,34 +361,31 @@ var vm = new Vue({
           firstName: this.formStepData[13].firstName,
           lastName: this.formStepData[13].lastName,
           streetAddress: this.formStepData[13].streetAddress,
+          city: this.city,
+          state: this.stateAbbreviation,
           phoneNumber: this.formStepData[14].phoneNumber,
           emailAddress: this.formStepData[14].emailAddress,
         }
 
-        console.log(this.finalObject)
-
         sessionStorage.setItem("finalObject", JSON.stringify(this.finalObject))
-        window.location.href = "thankyou"
 
-        // axios({
-        //   method: "post",
-        //   url: this.endPointURL,
-        //   data: this.finalObject,
-        // })
-        //   .then(function (response) {
-        //     console.log(response)
-        //   })
-        //   .catch(function (error) {
-        //     console.log(error)
-        //   })
+        axios({
+          method: "post",
+          url: this.endPointURL,
+          data: this.finalObject,
+        })
+          .then(function (response) {
+            window.location.href = "thankyou"
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
       } else {
         this.showError = true
       }
     },
 
     standardStepFire: function () {
-      console.log(this.formStepData[this.formStep].value)
-
       if (
         this.formStepData[this.formStep].pattern.test(
           this.formStepData[this.formStep].value
@@ -454,7 +437,6 @@ var vm = new Vue({
             function (snapshot) {
               var progress =
                 (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-              console.log("Upload is " + progress + " complete")
             },
             function (error) {
               console.log(error)
@@ -494,7 +476,6 @@ var vm = new Vue({
             function (snapshot) {
               var progress =
                 (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-              console.log("Upload is " + progress + " complete")
             },
             function (error) {
               console.log(error)
@@ -532,7 +513,6 @@ var vm = new Vue({
             function (snapshot) {
               var progress =
                 (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-              console.log("Upload is " + progress + " complete")
             },
             function (error) {
               console.log(error)

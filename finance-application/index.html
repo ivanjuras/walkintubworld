@@ -52,26 +52,181 @@
 
     <!-- Text Section -->
     <div class="text-section">
-      <div class="finance-form-container" id="finance-form">
-        <div class="applicant-information">
-          <h2 class="finance-form__heading">Applicant Information</h2>
-          <input
-            type="text"
-            class="finance-form__input"
-            placeholder="First name"
-            v-model="applicantFirstName"
-          />
+      <div class="finance-form" id="finance-form">
+        <div class="finance-form-container">
+          <div class="applicant-information">
+            <h2 class="finance-form__heading">Applicant Information</h2>
+            <input
+              type="text"
+              class="finance-form__input"
+              placeholder="First name"
+              v-model="applicantFirstName"
+            />
 
-          <input
-            type="text"
-            class="finance-form__input"
-            placeholder="Last Name"
-            v-model="applicantLastName"
-          />
+            <input
+              type="text"
+              class="finance-form__input"
+              placeholder="Last Name"
+              v-model="applicantLastName"
+            />
+
+            <input
+              type="text"
+              class="finance-form__input"
+              placeholder="Street address"
+              v-model="applicantStreetAddress"
+            />
+
+            <input
+              type="text"
+              class="finance-form__input"
+              placeholder="City"
+              v-model="applicantCity"
+            />
+
+            <input
+              type="text"
+              class="finance-form__input"
+              placeholder="State"
+              v-model="applicantState"
+            />
+
+            <input
+              type="text"
+              class="finance-form__input"
+              placeholder="Zip Code"
+              v-model="applicantZipCode"
+            />
+
+            <input
+              type="text"
+              class="finance-form__input"
+              placeholder="Date of birth"
+              v-model="applicantBirthDate"
+              v-mask="'##/##/####'"
+            />
+
+            <input
+              type="text"
+              class="finance-form__input"
+              placeholder="#SS"
+              v-model="applicantSSNumber"
+              v-mask="'###-##-####'"
+            />
+
+            <input
+              type="text"
+              class="finance-form__input"
+              placeholder="Gross monthly income"
+              v-model="applicantGrossMonthlyIncome"
+              v-mask="'$##########'"
+            />
+          </div>
+
+          <div class="co-applicant-information">
+            <a
+              v-show="showCoApplicant === false && viewportWidth < 1300"
+              class="show-co-applicant"
+              @click="showCoApplicant = !showCoApplicant"
+            >
+              <img src="../assets/media/plus-button.png" alt="" />
+              Add Co-Applicant
+            </a>
+
+            <transition name="fade" mode="out-in">
+              <div
+                class="finance-form-fields"
+                v-if="viewportWidth > 1300 || showCoApplicant === true"
+              >
+                <h2 class="finance-form__heading">Co-Applicant Information</h2>
+
+                <input
+                  type="text"
+                  class="finance-form__input"
+                  placeholder="First name"
+                  v-model="coApplicantFirstName"
+                />
+
+                <input
+                  type="text"
+                  class="finance-form__input"
+                  placeholder="Last Name"
+                  v-model="coApplicantLastName"
+                />
+
+                <input
+                  type="text"
+                  class="finance-form__input"
+                  placeholder="Street address"
+                  v-model="coApplicantStreetAddress"
+                />
+
+                <input
+                  type="text"
+                  class="finance-form__input"
+                  placeholder="City"
+                  v-model="coApplicantCity"
+                />
+
+                <input
+                  type="text"
+                  class="finance-form__input"
+                  placeholder="State"
+                  v-model="coApplicantState"
+                />
+
+                <input
+                  type="text"
+                  class="finance-form__input"
+                  placeholder="Zip Code"
+                  v-model="coApplicantZipCode"
+                />
+
+                <input
+                  type="text"
+                  class="finance-form__input"
+                  placeholder="Date of birth"
+                  v-model="coApplicantBirthDate"
+                  v-mask="'##/##/####'"
+                />
+
+                <input
+                  type="text"
+                  class="finance-form__input"
+                  placeholder="#SS"
+                  v-model="coApplicantSSNumber"
+                  v-mask="'###-##-####'"
+                />
+
+                <input
+                  type="text"
+                  class="finance-form__input"
+                  placeholder="Gross monthly income"
+                  v-model="coApplicantGrossMonthlyIncome"
+                  v-mask="'$##########'"
+                />
+              </div>
+            </transition>
+          </div>
         </div>
 
-        <div class="co-applicant-information"></div>
+        <button
+          @click="sendFinanceInfo"
+          class="form-step__button u-center-button"
+        >
+          Submit
+        </button>
       </div>
+
+      <p class="text-section__agree">
+        By clicking the Submit Button above, I (we) give Walk-In Tub World
+        permission to assist in sourcing financing options for our purchase. We
+        authorize and direct Walk-In Tub World to apply for and to negotiate on
+        our/my behalf, and to share this application with other financial
+        entities in the hope of us obtaining the most advantageous monthly
+        payment, term and rate available. I (we) reserve the right to accept or
+        to reject any terms offered to us.
+      </p>
     </div>
 
     <!-- Badges -->
@@ -111,6 +266,7 @@
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
     <script src="../assets/scripts/app2.js"></script>
   </body>
