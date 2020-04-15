@@ -88,7 +88,7 @@
                     pattern="\d*"
                     v-mask="'#####'"
                     maxlength="5"
-                    placeholder="Enter Zip Code"
+                    placeholder="Enter zip code"
                   />
                 </div>
 
@@ -413,7 +413,7 @@
                         id="feature-soaker"
                       />
                       <label
-                        :class="{ error: showError }"
+                        :class="{ error: showError, 'error--alt': showError }"
                         class="input-checkbox__label"
                         for="feature-soaker"
                       >
@@ -432,7 +432,7 @@
                         id="feature-water-jets"
                       />
                       <label
-                        :class="{ error: showError }"
+                        :class="{ error: showError, 'error--alt': showError }"
                         class="input-checkbox__label"
                         for="feature-water-jets"
                       >
@@ -451,7 +451,7 @@
                         id="feature-air-jets"
                       />
                       <label
-                        :class="{ error: showError }"
+                        :class="{ error: showError, 'error--alt': showError }"
                         class="input-checkbox__label"
                         for="feature-air-jets"
                       >
@@ -470,7 +470,7 @@
                         id="feature-aromatherapy"
                       />
                       <label
-                        :class="{ error: showError }"
+                        :class="{ error: showError, 'error--alt': showError }"
                         class="input-checkbox__label"
                         for="feature-aromatherapy"
                       >
@@ -489,7 +489,7 @@
                         id="feature-chromotherapy"
                       />
                       <label
-                        :class="{ error: showError }"
+                        :class="{ error: showError, 'error--alt': showError }"
                         class="input-checkbox__label"
                         for="feature-chromotherapy"
                       >
@@ -508,7 +508,7 @@
                         id="feature-other"
                       />
                       <label
-                        :class="{ error: showError }"
+                        :class="{ error: showError, 'error--alt': showError }"
                         class="input-checkbox__label"
                         for="feature-other"
                       >
@@ -701,22 +701,6 @@
                       >
                     </div>
 
-                    <div class="input-radio__block">
-                      <input
-                        @change="onSelectRadio"
-                        value="Center"
-                        name="waterheater-kind"
-                        type="radio"
-                        class="input-radio__item"
-                        id="dont-know-waterheater"
-                      />
-                      <label
-                        :class="{ error: showError }"
-                        class="input-radio__label"
-                        for="dont-know-waterheater"
-                        >I don't know</label
-                      >
-                    </div>
                   </div>
                 </div>
               </div>
@@ -767,23 +751,6 @@
                         class="input-radio__label"
                         for="bariatric-no"
                         >No</label
-                      >
-                    </div>
-
-                    <div class="input-radio__block">
-                      <input
-                        @change="onSelectRadio"
-                        value="Center"
-                        name="waterheater-kind"
-                        type="radio"
-                        class="input-radio__item"
-                        id="dont-know-waterheater"
-                      />
-                      <label
-                        :class="{ error: showError }"
-                        class="input-radio__label"
-                        for="dont-know-waterheater"
-                        >I don't know</label
                       >
                     </div>
                   </div>
@@ -872,7 +839,7 @@
                     <div class="input-radio__block">
                       <input
                         @change="onSelectRadio"
-                        value="Cash or Check"
+                        value="Cash or check"
                         name="payment-method"
                         type="radio"
                         class="input-radio__item"
@@ -938,9 +905,9 @@
 
                 <div class="form__field">
                   <div class="add-photos">
-                    <div class="add-photo" :class="{ error: showError }">
+                    <div class="add-photo">
                       <div class="add-photo__photo-box">
-                        <div class="add-photo__photo">
+                        <div class="add-photo__photo" :class="{ 'error--photo': showError }">
                           <input
                             id="bathtub-shower-take"
                             type="file"
@@ -950,12 +917,16 @@
                           <img
                             @click="bathtubShowerTakePhoto"
                             :src="formStepData[12].bathtubShowerPhoto.url"
+                            :class="{ error: showError }"
                             id="add-photo__bathtub-shower"
                             alt=""
                             width="75"
                             height="50"
                           />
+
+                          <img v-if="showSpinner1" width="50" height="50" class="spinner" src="./assets/media/spinner.svg" alt="Spinner">
                         </div>
+                        
 
                         <div class="add-photo__retake">
                           <span
@@ -971,9 +942,9 @@
                       </span>
                     </div>
 
-                    <div class="add-photo" :class="{ error: showError }">
+                    <div class="add-photo">
                       <div class="add-photo__photo-box">
-                        <div class="add-photo__photo">
+                        <div class="add-photo__photo" :class="{ 'error--photo': showError }">
                           <input
                             id="bathroom-door-frame-take"
                             type="file"
@@ -983,11 +954,14 @@
                           <img
                             @click="bathroomDoorFrameTakePhoto"
                             :src="formStepData[12].bathroomDoorFramePhoto.url"
+                            :class="{ error: showError }"
                             id="add-photo__bathroom-door-frame"
                             alt=""
                             width="75"
                             height="50"
                           />
+
+                          <img v-if="showSpinner2" width="50" height="50" class="spinner" src="./assets/media/spinner.svg" alt="Spinner">
                         </div>
 
                         <div class="add-photo__retake">
@@ -1004,23 +978,25 @@
                       </span>
                     </div>
 
-                    <div class="add-photo" :class="{ error: showError }">
+                    <div class="add-photo">
                       <div class="add-photo__photo-box">
-                        <div class="add-photo__photo">
-                          <input
-                            id="water-heater-photo"
-                            type="file"
-                            accept="image/*"
-                            hidden
-                          />
-                          <img
-                            @click="waterHeaterTakePhoto"
-                            :src="formStepData[12].waterHeaterPhoto.url"
-                            id="add-photo__water-heater"
-                            alt=""
-                            width="75"
-                            height="50"
-                          />
+                        <div class="add-photo__photo" :class="{ 'error--photo': showError }">
+                            <input
+                              id="water-heater-photo"
+                              type="file"
+                              accept="image/*"
+                              hidden
+                            />
+                            <img
+                              @click="waterHeaterTakePhoto"
+                              :src="formStepData[12].waterHeaterPhoto.url"
+                              id="add-photo__water-heater"
+                              alt=""
+                              width="75"
+                              height="50"
+                            />
+
+                            <img v-if="showSpinner3" width="50" height="50" class="spinner" src="./assets/media/spinner.svg" alt="Spinner">
                         </div>
 
                         <div class="add-photo__retake">
@@ -1068,7 +1044,7 @@
                         :class="{ error: showError }"
                         class="form__input-text first-name"
                         type="text"
-                        placeholder="First Name"
+                        placeholder="First name"
                       />
                     </div>
 
@@ -1079,7 +1055,7 @@
                         :class="{ error: showError }"
                         class="form__input-text last-name"
                         type="text"
-                        placeholder="Last Name"
+                        placeholder="Last name"
                       />
                     </div>
 

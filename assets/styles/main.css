@@ -217,6 +217,10 @@ body {
   margin: 0 auto 3rem auto;
 }
 
+.u-mb-l {
+  margin-bottom: 2rem !important;
+}
+
 /********** Header **********/
 .main-header {
   display: -webkit-box;
@@ -374,12 +378,13 @@ body {
 
 .text-section__button {
   width: 300px;
+  height: 50px;
   background: #e55d01;
   border-radius: 5px;
   color: #ffffff;
   font-weight: bold;
   font-size: 2rem;
-  padding: 1.3rem 5rem;
+  padding: 1.3rem 3rem;
   text-decoration: none;
   text-align: center;
   margin-bottom: 3rem;
@@ -387,33 +392,12 @@ body {
 
 @media (min-width: 1300px) {
   .text-section__button {
-    margin-bottom: 0;
+    margin-bottom: 30px;
   }
 }
 
-.text-section__button--big {
-  width: 340px;
-  max-width: 100%;
-  text-align: center;
-}
-
-@media (min-width: 1300px) {
-  .text-section__button--big {
-    width: 340px;
-    margin-bottom: 3rem;
-  }
-}
-
-.text-section__button--x-big {
-  max-width: 100%;
-  width: 400px;
-  text-align: center;
-}
-
-@media (min-width: 1300px) {
-  .text-section__button--x-big {
-    width: 400px;
-  }
+.text-section__button--p-xs {
+  padding: 0rem 3rem;
 }
 
 .text-section__button-container {
@@ -425,7 +409,10 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-bottom: 3rem;
-  width: 100%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 70%;
+  margin: 0 auto;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -457,6 +444,17 @@ body {
   }
 }
 
+.text-section__privacy-policy {
+  max-width: 770px;
+}
+
+.text-section__privacy-policy p {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: black;
+  letter-spacing: -0.5px;
+}
+
 /********** Badges **********/
 .badges {
   padding: 30px 20px;
@@ -479,9 +477,8 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     max-width: 120rem;
     margin: 0 auto;
   }
@@ -510,7 +507,7 @@ body {
 .footer__text-line {
   text-align: center;
   font-weight: 400;
-  color: #022d62;
+  color: #000;
   font-size: 1.4rem;
 }
 
@@ -777,6 +774,7 @@ body {
 }
 
 .add-photo__photo {
+  position: relative;
   display: block;
   margin: 0 auto;
   cursor: pointer;
@@ -788,6 +786,14 @@ body {
     margin-left: auto;
     margin-right: 1rem;
   }
+}
+
+.add-photo__error-box {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .add-photo__retake {
@@ -832,6 +838,26 @@ body {
 
 .add-photo img {
   border-radius: 5px;
+}
+
+.error--photo:after {
+  -webkit-box-shadow: inset 0 0 0 5px #f3403d;
+          box-shadow: inset 0 0 0 5px #f3403d;
+  pointer-events: none;
+  border-radius: 5px;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.spinner {
+  position: absolute;
+  right: 50%;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
 }
 
 /********** Form **********/
@@ -1194,9 +1220,58 @@ body {
 
 /********** Errors **********/
 .error {
-  box-shadow: 0 0 0 5px #f3403d;
-  -webkit-box-shadow: 0 0 0 5px #f3403d;
+  box-shadow: inset 0 0 0 5px #f3403d;
+  color: #f3403d !important;
+  -webkit-box-shadow: inset 0 0 0 5px #f3403d;
   -webkit-appearance: none;
+}
+
+.error::-webkit-input-placeholder {
+  /* Edge */
+  color: #f3403d;
+}
+
+.error:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #f3403d;
+}
+
+.error::-ms-input-placeholder {
+  color: #f3403d;
+}
+
+.error::placeholder {
+  color: #f3403d;
+}
+
+.error--alt {
+  color: #ffffff !important;
+}
+
+.error--alt::-webkit-input-placeholder {
+  /* Edge */
+  color: #ffffff;
+}
+
+.error--alt:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #ffffff;
+}
+
+#ffffff .error--alt::-webkit-input-placeholder {
+  color: #ffffff;
+}
+
+#ffffff .error--alt:-ms-input-placeholder {
+  color: #ffffff;
+}
+
+#ffffff .error--alt::-ms-input-placeholder {
+  color: #ffffff;
+}
+
+#ffffff .error--alt::placeholder {
+  color: #ffffff;
 }
 
 .error-message {
@@ -1369,7 +1444,7 @@ body {
 }
 
 .input-radio__item:checked + .input-radio__label {
-  background: #b9d5f9;
+  background: #b1e1f1;
 }
 
 .input-radio__item:not(:checked) + .input-radio__label {
@@ -1464,7 +1539,7 @@ body {
 }
 
 .input-checkbox__label {
-  padding-left: 0;
+  padding: 0 2rem 0 0;
   font-size: 1.8rem;
   color: #ffffff;
   text-shadow: 1px 1px 1px #555;

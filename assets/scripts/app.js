@@ -10,6 +10,9 @@ var vm = new Vue({
         "https://hook.integromat.com/81eb1lajvi88gb2fymruu7eu435wetrm", // Change your endpoint URL here
       buttonText: "Next",
       showButton: true,
+      showSpinner1: false,
+      showSpinner2: false,
+      showSpinner3: false,
       formStep: 0,
       showError: false,
       showConfirmation: false,
@@ -435,8 +438,7 @@ var vm = new Vue({
           uploadImageTask.on(
             "state_changed",
             function (snapshot) {
-              var progress =
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              vm.showSpinner1 = true
             },
             function (error) {
               console.log(error)
@@ -445,6 +447,7 @@ var vm = new Vue({
               uploadImageTask.snapshot.ref
                 .getDownloadURL()
                 .then(function (downloadURL) {
+                  vm.showSpinner1 = false
                   vm.formStepData[12].bathtubShowerPhoto.url = downloadURL
                   vm.formStepData[12].bathtubShowerPhoto.retakeVisible = true
                 })
@@ -474,8 +477,7 @@ var vm = new Vue({
           uploadImageTask.on(
             "state_changed",
             function (snapshot) {
-              var progress =
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              vm.showSpinner2 = true
             },
             function (error) {
               console.log(error)
@@ -484,6 +486,7 @@ var vm = new Vue({
               uploadImageTask.snapshot.ref
                 .getDownloadURL()
                 .then(function (downloadURL) {
+                  vm.showSpinner2 = false
                   vm.formStepData[12].bathroomDoorFramePhoto.url = downloadURL
                   vm.formStepData[12].bathroomDoorFramePhoto.retakeVisible = true
                 })
@@ -511,8 +514,7 @@ var vm = new Vue({
           uploadImageTask.on(
             "state_changed",
             function (snapshot) {
-              var progress =
-                (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              vm.showSpinner3 = true
             },
             function (error) {
               console.log(error)
@@ -521,6 +523,7 @@ var vm = new Vue({
               uploadImageTask.snapshot.ref
                 .getDownloadURL()
                 .then(function (downloadURL) {
+                  vm.showSpinner3 = false
                   vm.formStepData[12].waterHeaterPhoto.url = downloadURL
                   vm.formStepData[12].waterHeaterPhoto.retakeVisible = true
                 })
