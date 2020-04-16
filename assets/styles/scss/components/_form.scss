@@ -8,7 +8,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 .form__section {
@@ -16,8 +16,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 400px;
-  height: 400px;
+  min-height: 48rem;
+  height: 48rem;
 }
 @media (min-width: 1300px) {
   .form__section {
@@ -43,6 +43,26 @@
 }
 @media (min-width: 1300px) {
   .form__question {
+    max-width: 100%;
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+    text-shadow: none;
+    padding: 0 6rem;
+  }
+}
+
+.form__question--sm {
+  font-size: 2rem;
+  max-width: 400px;
+  color: #ffffff;
+  text-shadow: 1px 1px 1px #555;
+  text-align: center;
+  font-weight: 400;
+  margin-bottom: 3rem;
+}
+@media (min-width: 1300px) {
+  .form__question--sm {
     max-width: 100%;
     font-size: 3rem;
     font-weight: 300;
@@ -216,7 +236,7 @@
   background: #e55d01;
   color: #ffffff;
   width: 240px;
-  height: 40px;
+  height: 50px;
   color: #ffffff;
   font-size: 2.6rem;
   font-weight: 700;
