@@ -302,6 +302,7 @@ body {
 .logo {
   margin-bottom: -47px;
   max-width: 90px;
+  height: 1%;
 }
 
 @media (min-width: 1300px) {
