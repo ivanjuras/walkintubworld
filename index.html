@@ -30,12 +30,12 @@
         <div class="header-left">
           <img
             class="logo u-desktop-only"
-            src="./assets/media/logo.png"
+            src="./assets/media/logo.svg"
             alt="Walk-In Tub World logo"
           />
           <img
             class="logo u-mobile-only"
-            src="./assets/media/logo-mobile.png"
+            src="./assets/media/logo.svg"
             alt="Walk-In Tub World logo"
           />
         </div>
@@ -685,15 +685,15 @@
                     </div>
 
                     <div class="input-radio__block">
-                      <input
-                        @change="onSelectRadio"
-                        value="No"
-                        name="use-wheelchair"
-                        type="radio"
-                        class="input-radio__item"
-                        id="wheelchair-no"
-                      />
-                      <label
+                        <input
+                          @change="onSelectRadio"
+                          value="No"
+                          name="use-wheelchair"
+                          type="radio"
+                          class="input-radio__item"
+                          id="wheelchair-no"
+                        />
+                        <label
                         :class="{ error: showError }"
                         class="input-radio__label"
                         for="wheelchair-no"
