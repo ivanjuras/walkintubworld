@@ -21,7 +21,10 @@
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel="stylesheet" href="../assets/styles/main.css" />
-    <script src="https://kit.fontawesome.com/c68d77801a.js"></script>
+    <script
+      src="https://kit.fontawesome.com/eb60ad71b4.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- Header -->
@@ -66,8 +69,22 @@
             <input
               type="text"
               class="finance-form__input"
-              placeholder="Last Name"
+              placeholder="Last name"
               v-model="applicantLastName"
+            />
+
+            <input
+              type="text"
+              class="finance-form__input"
+              placeholder="Email"
+              v-model="applicantEmailAddress"
+            />
+
+            <input
+              type="text"
+              class="finance-form__input"
+              placeholder="Phone"
+              v-model="applicantPhoneNumber"
             />
 
             <input
@@ -94,7 +111,7 @@
             <input
               type="text"
               class="finance-form__input"
-              placeholder="Zip Code"
+              placeholder="Zip code"
               v-model="applicantZipCode"
             />
 
@@ -150,7 +167,7 @@
                 <input
                   type="text"
                   class="finance-form__input"
-                  placeholder="Last Name"
+                  placeholder="Last name"
                   v-model="coApplicantLastName"
                 />
 
@@ -178,7 +195,7 @@
                 <input
                   type="text"
                   class="finance-form__input"
-                  placeholder="Zip Code"
+                  placeholder="Zip code"
                   v-model="coApplicantZipCode"
                 />
 

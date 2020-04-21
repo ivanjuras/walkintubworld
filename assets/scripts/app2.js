@@ -14,6 +14,8 @@ var vm = new Vue({
 
       applicantFirstName: "",
       applicantLastName: "",
+      applicantPhoneNumber: "",
+      applicantEmailAddress: "",
       applicantStreetAddress: "",
       applicantCity: "",
       applicantState: "",
@@ -40,6 +42,8 @@ var vm = new Vue({
 
     this.applicantFirstName = finalObject.firstName
     this.applicantLastName = finalObject.lastName
+    this.applicantPhoneNumber = finalObject.phoneNumber
+    this.applicantEmailAddress = finalObject.emailAddress
     this.applicantStreetAddress = finalObject.streetAddress
     this.applicantCity = finalObject.city
     this.applicantState = finalObject.state
