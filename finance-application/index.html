@@ -174,6 +174,20 @@
                 <input
                   type="text"
                   class="finance-form__input"
+                  placeholder="Email"
+                  v-model="coApplicantEmailAddress"
+                />
+
+                <input
+                  type="text"
+                  class="finance-form__input"
+                  placeholder="Phone"
+                  v-model="coApplicantPhoneNumber"
+                />
+
+                <input
+                  type="text"
+                  class="finance-form__input"
                   placeholder="Street address"
                   v-model="coApplicantStreetAddress"
                 />
@@ -268,6 +282,8 @@
     <!-- Footer -->
     <section class="footer">
       <div class="container u-flex-column">
+        <p class="footer__address">476 Hwy 311 Ext. Randleman, NC 27317</p>
+
         <p class="footer__text-line">
           © 2020 Walk-In Tub World&#8482; | All Rights Reserved |
           <a class="footer__link" href="../privacy-policy/">Privacy Policy</a>

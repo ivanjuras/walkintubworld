@@ -14,8 +14,8 @@ var vm = new Vue({
 
       applicantFirstName: "",
       applicantLastName: "",
-      applicantPhoneNumber: "",
       applicantEmailAddress: "",
+      applicantPhoneNumber: "",
       applicantStreetAddress: "",
       applicantCity: "",
       applicantState: "",
@@ -26,6 +26,8 @@ var vm = new Vue({
 
       coApplicantFirstName: "",
       coApplicantLastName: "",
+      coApplicantEmailAddress: "",
+      coApplicantPhoneNumber: "",
       coApplicantStreetAddress: "",
       coApplicantCity: "",
       coApplicantState: "",
@@ -55,6 +57,8 @@ var vm = new Vue({
       this.financeObject = {
         applicantFirstName: this.applicantFirstName,
         applicantLastName: this.applicantLastName,
+        applicantEmailAddress: this.applicantEmailAddress,
+        applicantPhoneNumber: this.applicantPhoneNumber,
         applicantStreetAddress: this.applicantStreetAddress,
         applicantCity: this.applicantCity,
         applicantState: this.applicantState,
@@ -65,6 +69,8 @@ var vm = new Vue({
 
         coApplicantFirstName: this.coApplicantFirstName,
         coApplicantLastName: this.coApplicantLastName,
+        coApplicantEmailAddress: this.coApplicantEmailAddress,
+        coApplicantPhoneNumber: this.coApplicantPhoneNumber,
         coApplicantStreetAddress: this.coApplicantStreetAddress,
         coApplicantCity: this.coApplicantCity,
         coApplicantState: this.coApplicantState,
