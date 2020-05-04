@@ -58,7 +58,7 @@
         </div>
 
         <div class="header-right">
-          <a href="tel:+1-888-681-6080" class="phone-header">866-618-9979</a>
+          <a href="tel:+1-866-618-9979" class="phone-header">866-618-9979</a>
         </div>
       </div>
     </header>
@@ -426,8 +426,15 @@
                         id="feature-air-jets"
                       />
                       <label
-                        :class="{ error: showError, 'error--alt': showError }"
+                        v-if="showError === false"
                         class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-air-jets"
+                      >
+                        Air jets
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
                         for="feature-air-jets"
                       >
                         Air jets
@@ -455,8 +462,15 @@
                         id="feature-water-jets"
                       />
                       <label
-                        :class="{ error: showError, 'error--alt': showError }"
+                        v-if="showError === false"
                         class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-water-jets"
+                      >
+                        Water jets
+                      </label>
+                      <label
+                        v-else 
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
                         for="feature-water-jets"
                       >
                         Water jets
@@ -484,8 +498,15 @@
                         id="feature-aromatherapy"
                       />
                       <label
-                        :class="{ error: showError, 'error--alt': showError }"
+                        v-if="showError === false"
                         class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-aromatherapy"
+                      >
+                        Aromatherapy
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
                         for="feature-aromatherapy"
                       >
                         Aromatherapy
@@ -513,8 +534,15 @@
                         id="feature-chromotherapy"
                       />
                       <label
-                        :class="{ error: showError, 'error--alt': showError }"
+                        v-if="showError === false"
                         class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-chromotherapy"
+                      >
+                        Chromotherapy
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
                         for="feature-chromotherapy"
                       >
                         Chromotherapy
@@ -542,8 +570,15 @@
                         id="feature-speed-drain"
                       />
                       <label
-                        :class="{ error: showError, 'error--alt': showError }"
+                        v-if="showError === false"
                         class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-speed-drain"
+                      >
+                        Speed Drain
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
                         for="feature-speed-drain"
                       >
                         Speed Drain
@@ -571,9 +606,16 @@
                         id="feature-heated-seat"
                       />
                       <label
-                        :class="{ error: showError, 'error--alt': showError }"
+                        v-if="showError === false"
                         class="input-checkbox__label input-checkbox__label--featured"
-                        for="feature-heated-set"
+                        for="feature-heated-seat"
+                      >
+                        Heated Seat
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
+                        for="feature-heated-seat"
                       >
                         Heated Seat
                       </label>
@@ -600,8 +642,15 @@
                         id="feature-rain-head-shower"
                       />
                       <label
-                        :class="{ error: showError, 'error--alt': showError }"
+                        v-if="showError === false"
                         class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-rain-head-shower"
+                      >
+                        Rain Head Shower
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
                         for="feature-rain-head-shower"
                       >
                         Rain Head Shower
@@ -629,8 +678,15 @@
                         id="feature-other"
                       />
                       <label
-                        :class="{ error: showError, 'error--alt': showError }"
+                        v-if="showError === false"
                         class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-other"
+                      >
+                        Other
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
                         for="feature-other"
                       >
                         Other
@@ -1383,7 +1439,7 @@
     <!-- Footer -->
     <section class="footer">
       <div class="container u-flex-column">
-        <p class="footer__address">476 Hwy 311 Ext. Randleman, NC 27317</p>
+        <p class="footer__address">4615 Island Ford Rd. Randleman, NC 27317</p>
         
         <p class="footer__text-line">
           © 2020 Walk-In Tub World&#8482; | All Rights Reserved |
@@ -1392,6 +1448,12 @@
           >
           <img
             src="./assets/media/full-checkbox.png"
+            alt="Full checkbox"
+            style="display: none;"
+          />
+
+          <img
+            src="./assets/media/empty-checkbox-error.png"
             alt="Full checkbox"
             style="display: none;"
           />

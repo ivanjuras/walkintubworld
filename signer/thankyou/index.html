@@ -35,7 +35,7 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="../assets/styles/main.css" />
+    <link rel="stylesheet" href="../../assets/styles/main.css" />
     <script
       src="https://kit.fontawesome.com/eb60ad71b4.js"
       crossorigin="anonymous"
@@ -59,12 +59,12 @@
         <div class="header-left">
           <img
             class="logo u-desktop-only"
-            src="../assets/media/logo.svg"
+            src="../../assets/media/logo.svg"
             alt="Walk-In Tub World logo"
           />
           <img
             class="logo u-mobile-only"
-            src="../assets/media/logo.svg"
+            src="../../assets/media/logo.svg"
             alt="Walk-In Tub World logo"
           />
         </div>
@@ -81,66 +81,13 @@
 
     <!-- Text Section -->
     <div class="text-section">
-      <p>Hi <span id="first-name"></span>,</p>
-
+      <p>Welcome to the family!</p>
       <p>
-        While we prepare your quote, here are some downloads to review at your
-        leisure:
+        A copy of the completed purchase agreement has been sent to your email
+        address.
       </p>
-
-      <div class="text-section__button-container">
-        <a
-          class="text-section__button"
-          href="../pdfs/Customer Photos Walk-In Tub World.pdf"
-          >Customer Photos</a
-        >
-
-        <a
-          class="text-section__button text-section__button--p-xs"
-          href="../pdfs/Frequently Asked Questions Walk-In Tub World.pdf"
-          >Frequently Asked Questions</a
-        >
-
-        <a
-          class="text-section__button"
-          href="../pdfs/Brochure Walk-In Tub World.pdf"
-          >Brochure</a
-        >
-
-        <a
-          class="text-section__button"
-          href="../pdfs/Features & Options Walk-In Tub World.pdf"
-          >Features & Options</a
-        >
-      </div>
-
       <p>
-        You can expect your written quote within 1 business day. We will send
-        the quote to the email address you provided. If we have any questions
-        about the information you submitted or the scope of work, we will call
-        you.
-      </p>
-
-      <p>
-        If you selected financed monthly payments in your questionnaire, or if
-        you didn't but would still like to review those pricing options, please
-        complete this short application.
-      </p>
-
-      <a
-        class="text-section__button text-section__button--big u-center-button"
-        href="/finance-application"
-        >Finance Application</a
-      >
-
-      <p>
-        If you decide to move forward with us, simple how-to-purchase
-        instructions will be included with your quote.
-      </p>
-
-      <p>
-        If you have questions and would like to speak with us, please call
-        866-618-9979. We look forward to serving you and have a great day!
+        We will be in touch very soon to schedule your installation date.
       </p>
     </div>
 
@@ -148,17 +95,17 @@
     <section class="badges">
       <img
         class="badges__badge"
-        src="../assets/media/step-1-badge.png"
+        src="../../assets/media/step-1-badge.png"
         alt="Answer a few questions"
       />
       <img
         class="badges__badge"
-        src="../assets/media/step-2-badge.png"
+        src="../../assets/media/step-2-badge.png"
         alt="Post a few photos"
       />
       <img
         class="badges__badge"
-        src="../assets/media/step-3-badge.png"
+        src="../../assets/media/step-3-badge.png"
         alt="Get a Fast, Free quote"
       />
     </section>
@@ -170,23 +117,16 @@
 
         <p class="footer__text-line">
           © 2020 Walk-In Tub World&#8482; | All Rights Reserved |
-          <a class="footer__link" href="./">Privacy Policy</a>
+          <a class="footer__link" href="../../privacy-policy/"
+            >Privacy Policy</a
+          >
           <img
-            src="../assets/media/full-checkbox.png"
+            src="../../assets/media/full-checkbox.png"
             alt="Full checkbox"
             style="display: none;"
           />
         </p>
       </div>
     </section>
-
-    <script>
-      var finalObject = JSON.parse(sessionStorage.getItem("finalObject"))
-      console.log(finalObject)
-      var firstName = finalObject.firstName
-      var firstNameContainer = document.getElementById("first-name")
-
-      firstNameContainer.innerText = firstName
-    </script>
   </body>
 </html>
