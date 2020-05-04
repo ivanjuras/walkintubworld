@@ -100,3 +100,10 @@
   opacity: 1;
   transition: opacity 0.15s;
 }
+
+// Inner X button
+.tooltip-inner span {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
