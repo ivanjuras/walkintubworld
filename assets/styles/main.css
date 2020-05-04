@@ -1561,6 +1561,7 @@ video:focus {
 }
 
 .input-checkbox__block {
+  position: relative;
   width: 100%;
   margin-bottom: 1.2rem;
   cursor: pointer;
@@ -1622,7 +1623,13 @@ video:focus {
 }
 
 .tooltip-icon {
-  position: relative;
+  position: absolute;
+  color: #ffffff;
+  right: 0%;
+}
+
+.tooltip-icon::before {
+  position: absolute;
   z-index: 10000;
 }
 

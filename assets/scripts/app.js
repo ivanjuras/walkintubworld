@@ -2,7 +2,7 @@ Vue.config.devtools = true
 Vue.use(VueMask.VueMaskPlugin)
 
 var options = {
-  defaultTrigger: "hover focus click",
+  defaultTrigger: "click",
 }
 Vue.use(VTooltip, options)
 
