@@ -58,7 +58,7 @@
         </div>
 
         <div class="header-right">
-          <a href="tel:+1-888-681-6080" class="phone-header">888-681-6080</a>
+          <a href="tel:+1-888-681-6080" class="phone-header">866-618-9979</a>
         </div>
       </div>
     </header>
@@ -414,23 +414,29 @@
                 </p>
 
                 <div class="form__field">
-                  <div class="input-checkboxes">
+                  <div class="input-checkboxes features">
                     <div class="input-checkbox__block">
                       <input
                         @change="onSelectCheckbox"
-                        value="Soaker"
+                        value="Air jets"
                         v-model="formStepData[5].features"
                         name="what-features"
                         type="checkbox"
                         class="input-checkbox__item"
-                        id="feature-soaker"
+                        id="feature-air-jets"
                       />
                       <label
                         :class="{ error: showError, 'error--alt': showError }"
-                        class="input-checkbox__label"
-                        for="feature-soaker"
+                        class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-air-jets"
                       >
-                        Soaker
+                        Air jets
+                        <i
+                          class="fa fa-info-circle tooltip-icon"
+                          @click="stopInfoClickPropagation"
+                          v-tooltip="'Microbubble air jet therapy offers gentle exfoliation, deep cleaning and hydration.'"
+                          aria-hidden="true">
+                        </i>
                       </label>
                     </div>
 
@@ -446,29 +452,10 @@
                       />
                       <label
                         :class="{ error: showError, 'error--alt': showError }"
-                        class="input-checkbox__label"
+                        class="input-checkbox__label input-checkbox__label--featured"
                         for="feature-water-jets"
                       >
                         Water jets
-                      </label>
-                    </div>
-
-                    <div class="input-checkbox__block">
-                      <input
-                        @change="onSelectCheckbox"
-                        value="Air jets"
-                        v-model="formStepData[5].features"
-                        name="what-features"
-                        type="checkbox"
-                        class="input-checkbox__item"
-                        id="feature-air-jets"
-                      />
-                      <label
-                        :class="{ error: showError, 'error--alt': showError }"
-                        class="input-checkbox__label"
-                        for="feature-air-jets"
-                      >
-                        Air jets
                       </label>
                     </div>
 
@@ -484,7 +471,7 @@
                       />
                       <label
                         :class="{ error: showError, 'error--alt': showError }"
-                        class="input-checkbox__label"
+                        class="input-checkbox__label input-checkbox__label--featured"
                         for="feature-aromatherapy"
                       >
                         Aromatherapy
@@ -503,10 +490,67 @@
                       />
                       <label
                         :class="{ error: showError, 'error--alt': showError }"
-                        class="input-checkbox__label"
+                        class="input-checkbox__label input-checkbox__label--featured"
                         for="feature-chromotherapy"
                       >
                         Chromotherapy
+                      </label>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Speed Drain"
+                        v-model="formStepData[5].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-speed-drain"
+                      />
+                      <label
+                        :class="{ error: showError, 'error--alt': showError }"
+                        class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-speed-drain"
+                      >
+                        Speed Drain
+                      </label>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Heated Seat"
+                        v-model="formStepData[5].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-heated-seat"
+                      />
+                      <label
+                        :class="{ error: showError, 'error--alt': showError }"
+                        class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-heated-set"
+                      >
+                        Heated Seat
+                      </label>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Rain Head Shower"
+                        v-model="formStepData[5].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-rain-head-shower"
+                      />
+                      <label
+                        :class="{ error: showError, 'error--alt': showError }"
+                        class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-rain-head-shower"
+                      >
+                        Rain Head Shower
                       </label>
                     </div>
 
@@ -522,7 +566,7 @@
                       />
                       <label
                         :class="{ error: showError, 'error--alt': showError }"
-                        class="input-checkbox__label"
+                        class="input-checkbox__label input-checkbox__label--featured"
                         for="feature-other"
                       >
                         Other
@@ -1305,6 +1349,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+    <script src="https://unpkg.com/v-tooltip@2.0.2"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <script src="assets/scripts/app.js"></script>
   </body>

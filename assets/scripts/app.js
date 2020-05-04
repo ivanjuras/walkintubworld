@@ -1,6 +1,11 @@
 Vue.config.devtools = true
 Vue.use(VueMask.VueMaskPlugin)
 
+var options = {
+  defaultTrigger: "hover focus click",
+}
+Vue.use(VTooltip, options)
+
 var vm = new Vue({
   el: "#main-form",
 
@@ -399,6 +404,10 @@ var vm = new Vue({
       } else {
         this.showError = true
       }
+    },
+
+    stopInfoClickPropagation: function (e) {
+      e.stopPropagation()
     },
 
     resetError: function () {
