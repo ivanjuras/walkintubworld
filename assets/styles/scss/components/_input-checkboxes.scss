@@ -55,11 +55,15 @@
 }
 
 .input-checkbox__item + label:before {
+  position: relative;
+  top: 5px;
   content: url("../media/empty-checkbox.png");
   transform: translateZ(0);
 }
 
 .input-checkbox__item:checked + label:before {
+  position: relative;
+  top: 5px;
   content: url("../media/full-checkbox.png");
   transform: translateZ(0);
 }
