@@ -1941,6 +1941,7 @@ video:focus {
 
 @media (min-width: 1300px) {
   .review-form-container {
+    max-width: 50%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -1989,5 +1990,19 @@ video:focus {
   height: 270px;
   text-align: left;
   margin-bottom: 2rem;
+}
+
+.review-form__stars {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2rem;
+}
+
+.review-form__stars span {
+  margin-right: 1rem;
 }
 /*# sourceMappingURL=main.css.map */

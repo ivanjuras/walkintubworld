@@ -1,5 +1,6 @@
 Vue.config.devtools = true
 Vue.use(VueMask.VueMaskPlugin)
+Vue.component("star-rating", VueStarRating.default)
 
 var vm = new Vue({
   el: "#review-form",
@@ -9,6 +10,7 @@ var vm = new Vue({
       endPointURL:
         "https://hook.integromat.com/c4iwda0n617ovsch80x2lnwuydcwu558",
       reviewObject: {},
+      reviewerRating: 5,
       reviewerFirstName: "",
       reviewerLastName: "",
       reviewerPhone: "",
@@ -20,6 +22,7 @@ var vm = new Vue({
   methods: {
     sendReviewInfo: function () {
       this.reviewObject = {
+        reviewerRating: this.reviewerRating,
         reviewerFirstName: this.reviewerFirstName,
         reviewerLastName: this.reviewerLastName,
         reviewerPhone: this.reviewerPhone,

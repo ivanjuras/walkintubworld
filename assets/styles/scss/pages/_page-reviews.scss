@@ -6,6 +6,7 @@
 }
 @media (min-width: 1300px) {
   .review-form-container {
+    max-width: 50%;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -46,4 +47,14 @@
   height: 270px;
   text-align: left;
   margin-bottom: 2rem;
+}
+
+.review-form__stars {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.review-form__stars span {
+  margin-right: 1rem;
 }
