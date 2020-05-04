@@ -1627,6 +1627,8 @@ video:focus {
 }
 
 .tooltip-icon {
+  position: relative;
+  z-index: 100;
   color: #ffffff;
   display: inline-block;
   margin-top: 1rem;

@@ -1,4 +1,6 @@
 .tooltip-icon {
+  position: relative;
+  z-index: 100;
   color: $color-white;
   display: inline-block;
   margin-top: 1rem;
