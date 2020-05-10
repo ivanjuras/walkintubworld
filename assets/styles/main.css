@@ -508,27 +508,6 @@ body {
   padding: 0 1.6rem;
 }
 
-/********** Footer **********/
-.footer {
-  padding-bottom: 3rem;
-}
-
-.footer__text-line {
-  text-align: center;
-  font-weight: 400;
-  color: #000;
-  font-size: 1.4rem;
-}
-
-.footer__address {
-  margin-bottom: 3rem;
-}
-
-.footer__link {
-  color: inherit;
-  text-decoration: none;
-}
-
 /********** Bullets **********/
 .main-bullets {
   display: -webkit-box;
@@ -2015,5 +1994,30 @@ video:focus {
 
 .review-form__stars span {
   margin-right: 1rem;
+}
+
+/********** Footer **********/
+.footer {
+  padding-bottom: 3rem;
+}
+
+.footer__text-line {
+  text-align: center;
+  font-weight: 400 !important;
+  color: #000 !important;
+  font-size: 1.4rem !important;
+}
+
+.footer__address {
+  margin-bottom: 3rem !important;
+  text-align: center;
+  font-weight: 400 !important;
+  color: #000 !important;
+  font-size: 1.4rem !important;
+}
+
+.footer__link {
+  color: inherit;
+  text-decoration: none;
 }
 /*# sourceMappingURL=main.css.map */
