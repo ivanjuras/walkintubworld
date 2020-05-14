@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-KF7ZNQ2');</script>
+      <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fast, Online Walk-In Tub Quotes</title>
+    <meta
+      name="description"
+      content="Walk-In Tub World™ offers fast, online quotes and a no-hassle purchasing process. No in-home appointment required. Find out how affordable your project can be today!"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../assets/styles/main.css" />
+    <script src="https://kit.fontawesome.com/eb60ad71b4.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KF7ZNQ2"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+      
+    <!-- Header -->
+    <header class="main-header u-sm-fixed">
+      <div class="container u-align-items-center">
+        <div class="header-left">
+          <img
+            class="logo u-desktop-only"
+            src="../assets/media/logo.svg"
+            alt="Walk-In Tub World logo"
+          />
+          <img
+            class="logo u-mobile-only"
+            src="../assets/media/logo.svg"
+            alt="Walk-In Tub World logo"
+          />
+        </div>
+
+        <div class="header-center u-desktop-only">
+          <h4 class="save-big">Fast, Online Quotes</h4>
+        </div>
+
+        <div class="header-right">
+          <a href="tel:+1-866-618-9979" class="phone-header">866-618-9979</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main hero section -->
+    <section class="main-hero">
+      <div class="container u-flex-column u-flex-lg-row">
+        <div class="cta-section">
+          <h1 class="main-headline u-desktop-only">
+            Get Your Simple &amp;<br />Accurate Quote Now
+          </h1>
+          <h1 class="main-headline u-mobile-only">
+            Fast, Online Quotes
+          </h1>
+
+          <!-- Form here -->
+          <form class="form" id="main-form">
+            <transition name="fade" mode="out-in">
+              <!-- Form Step #0 - ZIP code -->
+              <div
+                key="0"
+                v-if="formStep === 0"
+                class="form__section form-step--0"
+              >
+                <p class="form__question" v-html="formStepData[0].question"></p>
+
+                <img
+                  class="map-marker"
+                  src="../assets/media/icon-marker.png"
+                  alt="Map Marker"
+                />
+
+                <div class="form__field form__field--md-row">
+                  <input
+                    v-model="formStepData[0].value"
+                    @keyup="resetError"
+                    class="form__input-text zip-code"
+                    :class="{ error: showError }"
+                    type="text"
+                    pattern="\d*"
+                    v-mask="'#####'"
+                    maxlength="5"
+                    placeholder="Enter zip code"
+                  />
+                </div>
+
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                  :class="{ 'form-step__button--float': formStep === 0}"
+                >
+                  {{ buttonText }}
+                  <i
+                    v-show="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
+                </button>
+              </div>
+
+              <!-- Form Step #1 - Features -->
+              <div
+                key="1"
+                v-if="formStep === 1"
+                class="form__section form-step--5"
+              >
+                <p class="form__question">
+                  {{ formStepData[1].question }}
+                </p>
+                <p class="form__sub-question">
+                  {{ formStepData[1].subQuestion }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-checkboxes features">
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Air jets"
+                        v-model="formStepData[1].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-air-jets"
+                      />
+                      <label
+                        v-if="showError === false"
+                        class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-air-jets"
+                      >
+                        Air jets
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
+                        for="feature-air-jets"
+                      >
+                        Air jets
+                      </label>
+
+                      <i
+                        class="fa fa-info-circle tooltip-icon tooltip-air-jets"
+                        @click="stopInfoClickPropagation"
+                        v-tooltip="{
+                          container: '.tooltip-air-jets',
+                          content: 'Microbubble air jet therapy offers gentle exfoliation, deep cleaning and hydration.',
+                          trigger: 'click, hover',
+                        }"
+                        aria-hidden="true">
+                      </i>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Water jets"
+                        v-model="formStepData[1].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-water-jets"
+                      />
+                      <label
+                        v-if="showError === false"
+                        class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-water-jets"
+                      >
+                        Water jets
+                      </label>
+                      <label
+                        v-else 
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
+                        for="feature-water-jets"
+                      >
+                        Water jets
+                      </label>
+
+                      <i
+                        class="fa fa-info-circle tooltip-icon tooltip-water-jets"
+                        @click="stopInfoClickPropagation"
+                        v-tooltip="{
+                          container: '.tooltip-water-jets',
+                          content: 'Variable speed water jets liven and exhilarate your body.',
+                          trigger: 'click, hover'
+                        }"
+                        aria-hidden="true">
+                      </i>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Aromatherapy"
+                        v-model="formStepData[1].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-aromatherapy"
+                      />
+                      <label
+                        v-if="showError === false"
+                        class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-aromatherapy"
+                      >
+                        Aromatherapy
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
+                        for="feature-aromatherapy"
+                      >
+                        Aromatherapy
+                      </label>
+
+                      <i
+                        class="fa fa-info-circle tooltip-icon tooltip-aromatherapy"
+                        @click="stopInfoClickPropagation"
+                        v-tooltip="{
+                          container: '.tooltip-aromatherapy',
+                          content: 'Essential scented oils of lavender and eucalyptus provide a spa-like experience.',
+                          trigger: 'click, hover'
+                        }"
+                        aria-hidden="true">
+                      </i>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Chromotherapy"
+                        v-model="formStepData[1].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-chromotherapy"
+                      />
+                      <label
+                        v-if="showError === false"
+                        class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-chromotherapy"
+                      >
+                        Chromotherapy
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
+                        for="feature-chromotherapy"
+                      >
+                        Chromotherapy
+                      </label>
+
+                      <i
+                        class="fa fa-info-circle tooltip-icon tooltip-chromotherapy"
+                        @click="stopInfoClickPropagation"
+                        v-tooltip="{
+                          container: '.tooltip-chromotherapy',
+                          content: 'Dim the lights, relax and enjoy chromotherapy mood lighting.',
+                          trigger: 'click, hover'
+                        }"
+                        aria-hidden="true">
+                      </i>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Speed Drain"
+                        v-model="formStepData[1].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-speed-drain"
+                      />
+                      <label
+                        v-if="showError === false"
+                        class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-speed-drain"
+                      >
+                        Speed Drain
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
+                        for="feature-speed-drain"
+                      >
+                        Speed Drain
+                      </label>
+
+                      <i
+                        class="fa fa-info-circle tooltip-icon"
+                        @click="stopInfoClickPropagation"
+                        v-tooltip="{
+                          content: 'Our water pump can include reverse intake to drain your tub in 60-90 seconds.',
+                          trigger: 'click, hover'
+                        }"
+                        aria-hidden="true">
+                      </i>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Heated Seat"
+                        v-model="formStepData[1].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-heated-seat"
+                      />
+                      <label
+                        v-if="showError === false"
+                        class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-heated-seat"
+                      >
+                        Heated Seat
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
+                        for="feature-heated-seat"
+                      >
+                        Heated Seat
+                      </label>
+
+                      <i
+                        class="fa fa-info-circle tooltip-icon tooltip-heated-seat"
+                        @click="stopInfoClickPropagation"
+                        v-tooltip="{
+                          container: '.tooltip-heated-seat',
+                          content: 'Advanced radiant heaters for your seat and back, for your day at the spa, at home.',
+                          trigger: 'click, hover'
+                        }"
+                        aria-hidden="true">
+                      </i>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Rain Head Shower"
+                        v-model="formStepData[1].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-rain-head-shower"
+                      />
+                      <label
+                        v-if="showError === false"
+                        class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-rain-head-shower"
+                      >
+                        Rain Head Shower
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
+                        for="feature-rain-head-shower"
+                      >
+                        Rain Head Shower
+                      </label>
+
+                      <i
+                        class="fa fa-info-circle tooltip-icon tooltip-rain-head-shower"
+                        @click="stopInfoClickPropagation"
+                        v-tooltip="{
+                          container: '.tooltip-rain-head-shower',
+                          content: 'Enjoy spa showering with a wide, rain head shower system.',
+                          trigger: 'click, hover'
+                        }"
+                        aria-hidden="true">
+                      </i>
+                    </div>
+
+                    <div class="input-checkbox__block">
+                      <input
+                        @change="onSelectCheckbox"
+                        value="Other"
+                        v-model="formStepData[1].features"
+                        name="what-features"
+                        type="checkbox"
+                        class="input-checkbox__item"
+                        id="feature-other"
+                      />
+                      <label
+                        v-if="showError === false"
+                        class="input-checkbox__label input-checkbox__label--featured"
+                        for="feature-other"
+                      >
+                        Other
+                      </label>
+                      <label
+                        v-else
+                        class="input-checkbox__label input-checkbox__label--error input-checkbox__label--featured"
+                        for="feature-other"
+                      >
+                        Other
+                      </label>
+
+                      <i
+                        class="fa fa-info-circle tooltip-icon"
+                        @click="stopInfoClickPropagation"
+                        v-tooltip="{
+                          content: 'Looking for something more? Speak with your installation manager.',
+                          trigger: 'click, hover'
+                        }"
+                        aria-hidden="true">
+                      </i>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                  :class="{ 'form-step__button--float': formStep === 0 }"
+                >
+                  {{ buttonText }}
+                  <i
+                    v-if="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
+                </button>
+              </div>
+
+              <!-- Form Step #2 - Measures -->
+              <div
+                v-if="formStep === 2"
+                key="2"
+                class="form__section form-step--10"
+              >
+                <p class="form__question">
+                  {{ formStepData[2].question }}
+                </p>
+                <p class="form__sub-question">
+                  {{ formStepData[2].subQuestion }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[2].bathroomDoorFrameWidth"
+                        @keyup="resetError"
+                        :class="{ error: showError}"
+                        class="form__input-text u-fs-md"
+                        type="text"
+                        placeholder="Width of bathroom door frame"
+                        v-mask="'###'"
+                      />
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[2].bathtubShowerLength"
+                        @keyup="resetError"
+                        :class="{ error: showError} "
+                        class="form__input-text u-fs-md"
+                        type="text"
+                        placeholder="Length of bathtub/shower"
+                        v-mask="'###'"
+                      />
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[2].bathtubShowerWidth"
+                        @keyup="resetError"
+                        :class="{ error: showError }"
+                        class="form__input-text u-fs-md"
+                        type="text"
+                        placeholder="Width of bathtub/shower"
+                        v-mask="'###'"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                  :class="{ 'form-step__button--float': formStep === 0}"
+                >
+                  {{ buttonText }}
+                  <i
+                    v-show="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
+                </button>
+              </div>
+
+              <!-- Form Step #3 - Photos -->
+              <div
+                key="3"
+                v-if="formStep === 3"
+                class="form__section form-step--12"
+              >
+                <p class="form__question">
+                  {{ formStepData[3].question }}
+                </p>
+                <p class="form__sub-question">
+                  {{ formStepData[3].subQuestion }}
+                </p>
+
+                <div class="form__field">
+                  <div class="add-photos">
+                    <div class="add-photo">
+                      <div class="add-photo__photo-box">
+                        <div class="add-photo__photo" :class="{ 'error--photo': showError }">
+                          <input
+                            id="bathtub-shower-take"
+                            type="file"
+                            accept="image/*"
+                            hidden
+                          />
+                          <img
+                            @click="bathtubShowerTakePhoto"
+                            :src="formStepData[3].bathtubShowerPhoto.url"
+                            :class="{ error: showError }"
+                            id="add-photo__bathtub-shower"
+                            alt=""
+                            width="75"
+                            height="50"
+                          />
+
+                          <img v-if="showSpinner1" width="50" height="50" class="spinner" src="../assets/media/spinner.svg" alt="Spinner">
+                        </div>
+                        
+
+                        <div class="add-photo__retake">
+                          <span
+                            v-if="formStepData[3].bathtubShowerPhoto.retakeVisible"
+                            @click="bathtubShowerTakePhoto"
+                            >retake</span
+                          >
+                        </div>
+                      </div>
+
+                      <span class="add-photo__text">
+                        of bathtub/shower
+                      </span>
+                    </div>
+
+                    <div class="add-photo">
+                      <div class="add-photo__photo-box">
+                        <div class="add-photo__photo" :class="{ 'error--photo': showError }">
+                          <input
+                            id="bathroom-door-frame-take"
+                            type="file"
+                            accept="image/*"
+                            hidden
+                          />
+                          <img
+                            @click="bathroomDoorFrameTakePhoto"
+                            :src="formStepData[3].bathroomDoorFramePhoto.url"
+                            :class="{ error: showError }"
+                            id="add-photo__bathroom-door-frame"
+                            alt=""
+                            width="75"
+                            height="50"
+                          />
+
+                          <img v-if="showSpinner2" width="50" height="50" class="spinner" src="../assets/media/spinner.svg" alt="Spinner">
+                        </div>
+
+                        <div class="add-photo__retake">
+                          <span
+                            v-if="formStepData[3].bathroomDoorFramePhoto.retakeVisible"
+                            @click="bathroomDoorFrameTakePhoto"
+                            >retake</span
+                          >
+                        </div>
+                      </div>
+
+                      <span class="add-photo__text">
+                        of bathroom door frame
+                      </span>
+                    </div>
+
+                    <div class="add-photo">
+                      <div class="add-photo__photo-box">
+                        <div class="add-photo__photo" :class="{ 'error--photo': showError }">
+                            <input
+                              id="water-heater-photo"
+                              type="file"
+                              accept="image/*"
+                              hidden
+                            />
+                            <img
+                              @click="waterHeaterTakePhoto"
+                              :src="formStepData[3].waterHeaterPhoto.url"
+                              id="add-photo__water-heater"
+                              alt=""
+                              width="75"
+                              height="50"
+                            />
+
+                            <img v-if="showSpinner3" width="50" height="50" class="spinner" src="../assets/media/spinner.svg" alt="Spinner">
+                        </div>
+
+                        <div class="add-photo__retake">
+                          <span
+                            v-if="formStepData[3].waterHeaterPhoto.retakeVisible"
+                            @click="waterHeaterTakePhoto"
+                            >retake</span
+                          >
+                        </div>
+                      </div>
+
+                      <span class="add-photo__text">
+                        of water heater
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                >
+                  {{ buttonText }}
+                  <i
+                    v-show="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
+                </button>
+              </div>
+
+              <!-- Form Step #4 - Personal Info -->
+              <div key="4" v-if="formStep === 4" class="form__section">
+                <p class="form__question">
+                  {{ formStepData[4].question }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[4].firstName"
+                        @keyup="resetError"
+                        :class="{ error: showError }"
+                        class="form__input-text first-name"
+                        type="text"
+                        placeholder="First name"
+                      />
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[4].lastName"
+                        @keyup="resetError"
+                        :class="{ error: showError }"
+                        class="form__input-text last-name"
+                        type="text"
+                        placeholder="Last name"
+                      />
+                    </div>
+
+                    <div class="input-radio__block">
+                      <input
+                        v-model="formStepData[4].streetAddress"
+                        @keyup="resetError"
+                        :class="{ error: showError }"
+                        class="form__input-text last-name"
+                        type="text"
+                        placeholder="Street address"
+                      />
+                    </div>
+
+                    <div class="floating-address">
+                      <img
+                        src="../assets/media/icon-marker-small.png"
+                        alt="Small marker"
+                        style="margin-right: 1rem"
+                      />
+                      <span class="floatingAddress__city">{{ city }},&nbsp;</span>
+                      <span class="floatingAddress__state"
+                        >{{ stateAbbreviation }}
+                      </span>
+                      <span class="floatingAddress__state"></span>
+                        &nbsp; {{ stateZipCode }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                  :class="{ 'form-step__button--float': formStep === 0}"
+                >
+                  {{ buttonText }}
+                  <i
+                    v-show="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
+                </button>
+              </div>
+
+              <!-- Form Step #14 - Final Step -->
+              <div
+                key="5"
+                v-if="formStep === 5"
+                class="form__section form-step--6"
+              >
+                <p class="form__question">
+                  {{ formStepData[5].question }}
+                </p>
+
+                <div class="form__field">
+                  <div class="input-radios input-radios--column">
+                    <div class="input-radio__block">
+                      <span class="form__input-text--phone">
+                        <input
+                          v-model="formStepData[5].phoneNumber"
+                          @keyup="resetError"
+                          :class="{ error: showError }"
+                          v-mask="'(###) ###-####'"
+                          class="form__input-text phone-number"
+                          type="text"
+                          placeholder="Phone"
+                        />
+                      </span>
+                    </div>
+
+                    <div class="input-radio__block">
+                      <span class="form__input-text--email">
+                        <input
+                          v-model="formStepData[5].emailAddress"
+                          @keyup="resetError"
+                          :class="{ error: showError }"
+                          class="form__input-text email-address"
+                          type="text"
+                          placeholder="Email"
+                        />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  v-show="showButton"
+                  @click.prevent="increaseFormStep"
+                  class="form-step__button"
+                  :class="{ 'form-step__button--float': formStep === 0}"
+                >
+                  {{ buttonText }}
+                  <i
+                    v-if="showArrow"
+                    class="form-step__arrow fas fa-long-arrow-alt-right"
+                  ></i>
+                </button>
+                <p v-show="showConfirmation" class="confirmation">
+                  By clicking the Get Quote button you agree to authorize Walk-In Tub World and it's partners to call, email and text message you on the phone number you provided, using automated technology. Your consent does not require purchase.
+                </p>
+              </div>
+            </transition>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Badges -->
+    <section class="badges">
+      <img
+        class="badges__badge"
+        src="../assets/media/step-1-badge.png"
+        alt="Answer a few questions"
+      />
+      <img
+        class="badges__badge"
+        src="../assets/media/step-2-badge.png"
+        alt="Post a few photos"
+      />
+      <img
+        class="badges__badge"
+        src="../assets/media/step-3-badge.png"
+        alt="Get a Fast, Free quote"
+      />
+    </section>
+
+    <!-- Why Love Section -->
+    <div class="why-love">
+      <div class="why-love__container">
+        <h3 class="why-love__heading">
+          Once we review your requirements, we will send you a written quote.<br
+            class="u-desktop-only"
+          />
+          Yes, it’s that easy.
+        </h3>
+        <h3 class="why-love__heading">
+          Why does everyone love Walk-In Tub World?
+        </h3>
+        <ul class="why-love__list">
+          <li class="why-love__list-item">
+            No 2-3 hour sales presentations in your living room.
+          </li>
+          <li class="why-love__list-item">
+            No pressure to buy on the spot.
+          </li>
+          <li class="why-love__list-item">
+            No special 1 time discounts – our price is our price.
+          </li>
+          <li class="why-love__list-item">
+            Only work with your installation manager and our qualified installers.
+          </li>
+        </ul>
+        <p class="why-love__content">
+          The cost of your walk-in tub will depend on installation factors like
+          your current bathroom layout, electrical and plumbing configuration,
+          the size of the tub, and the features that work best for you. We are confident our
+          quality is second to none, our prices are more affordable than other
+          companies, and that you will find our process hassle-free.
+        </p>
+      </div>
+    </div>
+
+    <!-- Featured -->
+    <div class="featured">
+      <div class="featured__container">
+        <img
+          class="featured__item"
+          src="../assets/media/lifetime-warranty-badge.png"
+          alt="Lifetime warranty badge"
+        />
+        <img
+          class="featured__item"
+          src="../assets/media/tub-photo-1.png"
+          alt="Bathtub photo 1"
+        />
+        <img
+          class="featured__item"
+          src="../assets/media/tub-photo-2.png"
+          alt="Bathtub photo 2"
+        />
+        <img
+          class="featured__item"
+          src="../assets/media/tub-photo-3.png"
+          alt="Bathtub photo 3"
+        />
+        <img
+          class="featured__item"
+          src="../assets/media/expert-install-badge.png"
+          alt="Lifetime warranty badge"
+        />
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <section class="footer">
+      <div class="container u-flex-column">
+        <p class="footer__address">476 US Highway 311 Ext, Randleman, NC 27317</p>
+        
+        <p class="footer__text-line">
+          © 2020 Walk-In Tub World&#8482; | All Rights Reserved |
+          <a class="footer__link" href="./privacy-policy/"
+            >Privacy Policy</a
+          >
+          <img
+            src="../assets/media/full-checkbox.png"
+            alt="Full checkbox"
+            style="display: none;"
+          />
+
+          <img
+            src="../assets/media/empty-checkbox-error.png"
+            alt="Full checkbox"
+            style="display: none;"
+          />
+        </p>
+      </div>
+    </section>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCcjNFM4M0vW8PqqtiwhcxDwZzifI5-ULk",
+        authDomain: "walkin-tubworld.firebaseapp.com",
+        databaseURL: "https://walkin-tubworld.firebaseio.com",
+        projectId: "walkin-tubworld",
+        storageBucket: "walkin-tubworld.appspot.com",
+        messagingSenderId: "316091485536",
+        appId: "1:316091485536:web:96e81720c35a93992c2205",
+      }
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig)
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+    <script src="https://unpkg.com/v-tooltip@2.0.2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="../assets/scripts/app-v2.js"></script>
+  </body>
+</html>
