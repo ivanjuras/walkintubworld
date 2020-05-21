@@ -1654,12 +1654,13 @@ video:focus {
   background: white;
   color: black;
   border-radius: 0.5rem;
-  padding: 0.4rem 0.8rem 0.4rem;
+  padding: 0.4rem 0.4rem;
   font-size: 1rem;
   font-weight: 400;
   width: 150px;
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
+  text-shadow: none;
 }
 
 @media (min-width: 1300px) {

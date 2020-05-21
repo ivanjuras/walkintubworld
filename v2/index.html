@@ -455,6 +455,17 @@
                 </p>
                 <p class="form__sub-question">
                   {{ formStepData[2].subQuestion }}
+
+                  <i
+                    class="fa fa-info-circle tooltip-icon tooltip-measurements"
+                    @click="stopInfoClickPropagation"
+                    v-tooltip="{
+                      container: '.tooltip-measurements',
+                      content: 'If you need assistance, you can email <a href=mailto:quote@walkintubworld.com>quote@walkintubworld.com</a> or call us',
+                      trigger: 'click, hover',
+                    }"
+                    aria-hidden="true">
+                  </i>
                 </p>
 
                 <div class="form__field">
@@ -522,6 +533,17 @@
                 </p>
                 <p class="form__sub-question">
                   {{ formStepData[3].subQuestion }}
+
+                  <i
+                    class="fa fa-info-circle tooltip-icon tooltip-photos"
+                    @click="stopInfoClickPropagation"
+                    v-tooltip="{
+                      container: '.tooltip-photos',
+                      content: 'Depending on your internet connection and the size of your photos, it may take 10-20 seconds for each photo to upload. You can also email your photos to <a href=mailto:quote@walkintubworld.com>quote@walkintubworld.com</a>',
+                      trigger: 'click, hover',
+                    }"
+                    aria-hidden="true">
+                  </i>
                 </p>
 
                 <div class="form__field">
